@@ -7,6 +7,8 @@ name = "Ship-GUI"
 version = "0.1.0"
 dependencies = [
  "dotenv",
+ "gdk4",
+ "gio",
  "gtk4",
  "serde",
 ]

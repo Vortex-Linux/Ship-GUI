@@ -1,5 +1,7 @@
+use gdk4::Display;
 use gtk4::prelude::*;
-use gtk4::{Application, ApplicationWindow, Builder, Label, Notebook};
+use gtk4::{Application, ApplicationWindow, Builder, Label, Notebook, CssProvider};
+use gio::File;
 
 pub fn build_app() -> Application {
     let gtk_env = super::gtk_env::GtkEnv::init();
@@ -8,12 +10,27 @@ pub fn build_app() -> Application {
         .application_id(&gtk_env.application_id)
         .build();
 
+    app.connect_startup(|_| load_css());
+
     app.connect_activate(move |app| {
         let window = build_window(app);
         window.present();
     });
 
     app
+}
+
+fn load_css() {
+    let provider = CssProvider::new();
+    let file = File::for_path("src/ui/style.css");
+
+    provider.load_from_file(&file); 
+
+    gtk4::style_context_add_provider_for_display(
+        &Display::default().expect("Could not connect to a display."),
+        &provider,
+        gtk4::STYLE_PROVIDER_PRIORITY_APPLICATION,
+    );
 }
 
 fn build_window(app: &Application) -> ApplicationWindow {
