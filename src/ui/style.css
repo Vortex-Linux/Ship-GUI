@@ -1,0 +1,32 @@
+.main_box {
+    padding: 20px; 
+    border-radius: 10px; 
+}
+
+.notebook {
+    padding: 10px; 
+    border: 1px solid #dddddd; 
+    border-radius: 5px; 
+}
+
+.page1 {
+    padding: 15px; 
+}
+
+.page2 {
+    padding: 15px; 
+}
+
+.label1 {
+    font-size: 16px; 
+    color: #007bff; 
+    font-weight: bold; 
+    padding: 10px 0; 
+}
+
+.label2 {
+    font-size: 16px; 
+    color: #28a745; 
+    font-weight: bold; 
+    padding: 10px 0; 
+}
