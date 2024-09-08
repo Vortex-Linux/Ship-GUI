@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interface>
+    <object class="GtkBox" id="page1">        
+        <property name="orientation">vertical</property>
+    </object>
+</interface>
+
+
