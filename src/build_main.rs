@@ -2,6 +2,7 @@ use gdk4::Display;
 use gtk4::prelude::*;
 use gtk4::{Application, ApplicationWindow, Builder, Label, Notebook, CssProvider};
 use gio::File;
+use std::path::PathBuf;
 
 pub fn build_app() -> Application {
     let gtk_env = super::gtk_env::GtkEnv::init();
@@ -16,9 +17,16 @@ pub fn build_app() -> Application {
     app
 }
 
+fn get_base_folder() -> PathBuf {
+    return PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+} 
+
 fn load_css() {
     let provider = CssProvider::new();
-    let file = File::for_path("style.css");
+
+    let css_file_path = get_base_folder().join("src/ui/style.css");
+    let file = File::for_path(css_file_path);
+
     provider.load_from_file(&file); 
     gtk4::style_context_add_provider_for_display(
         &Display::default().expect("Could not connect to a display."),
@@ -28,9 +36,12 @@ fn load_css() {
 }
 
 fn build_window(app: &Application) -> ApplicationWindow {
-    let main_window_builder = Builder::from_file("main_window.ui");
-    let page1_builder = Builder::from_file("page1.ui");
-    let page2_builder = Builder::from_file("page2.ui");
+
+    let base_folder = get_base_folder();
+    
+    let main_window_builder = Builder::from_file(base_folder.join("src/ui/main_window.ui").to_str().unwrap());
+    let page1_builder = Builder::from_file(base_folder.join("src/ui/page1.ui").to_str().unwrap());
+    let page2_builder = Builder::from_file(base_folder.join("src/ui/page2.ui").to_str().unwrap());
     
     let window: ApplicationWindow = main_window_builder.object("main_window").expect("Failed to get main_window");
     window.set_application(Some(app));
