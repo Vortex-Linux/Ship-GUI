@@ -35,6 +35,13 @@ fn load_css() {
     );
 }
 
+fn set_label_expand_and_align(label: &Label) {
+    label.set_hexpand(true);
+    label.set_vexpand(true);
+    label.set_halign(gtk4::Align::Fill);
+    label.set_valign(gtk4::Align::Center);
+}
+ 
 fn build_window(app: &Application) -> ApplicationWindow {
 
     let base_folder = get_base_folder();
@@ -42,6 +49,8 @@ fn build_window(app: &Application) -> ApplicationWindow {
     let main_window_builder = Builder::from_file(base_folder.join("src/ui/main_window.ui").to_str().unwrap());
     let page1_builder = Builder::from_file(base_folder.join("src/ui/page1.ui").to_str().unwrap());
     let page2_builder = Builder::from_file(base_folder.join("src/ui/page2.ui").to_str().unwrap());
+    let create_container_button_builder = Builder::from_file(base_folder.join("src/ui/create_container_button.ui").to_str().unwrap());
+    let create_vm_button_builder = Builder::from_file(base_folder.join("src/ui/create_vm_button.ui").to_str().unwrap());
     
     let window: ApplicationWindow = main_window_builder.object("main_window").expect("Failed to get main_window");
     window.set_application(Some(app));
@@ -49,14 +58,20 @@ fn build_window(app: &Application) -> ApplicationWindow {
     let main_box: gtk4::Box = main_window_builder.object("main_box").expect("failed to get main_box");
     let notebook: Notebook = main_window_builder.object("notebook").expect("Failed to get notebook");
     
-    let page1: gtk4::Widget = page1_builder.object("page1").expect("Failed to get page1");
-    let page2: gtk4::Widget = page2_builder.object("page2").expect("Failed to get page2");
+    let page1: gtk4::Box = page1_builder.object("page1").expect("Failed to get page1");
+    let page2: gtk4::Box = page2_builder.object("page2").expect("Failed to get page2");
 
     let label1 = Label::new(Some("Containers"));
     let label2 = Label::new(Some("Virtual Machines"));
-    
+
+    let create_container_button: gtk4::Button = create_container_button_builder.object("create_container_button").expect("Failed to get Create Container button");
+    let create_vm_button: gtk4::Button = create_vm_button_builder.object("create_vm_button").expect("Failed to get Create VM button"); 
+ 
     notebook.append_page(&page1, Some(&label1));
     notebook.append_page(&page2, Some(&label2));
+
+    page1.append(&create_container_button);  
+    page2.append(&create_vm_button);
 
     main_box.add_css_class("main_box");
     notebook.add_css_class("notebook");
@@ -64,15 +79,12 @@ fn build_window(app: &Application) -> ApplicationWindow {
     page2.add_css_class("page2");
     label1.add_css_class("label1");
     label2.add_css_class("label2");
-    
-    label1.set_hexpand(true);
-    label1.set_vexpand(true);
-    label1.set_halign(gtk4::Align::Fill);
-    label1.set_valign(gtk4::Align::Center);
-    label2.set_hexpand(true);
-    label2.set_vexpand(true);
-    label2.set_halign(gtk4::Align::Fill);
-    label2.set_valign(gtk4::Align::Center);
+    label1.add_css_class("create_container_button");
+    label2.add_css_class("create_vm_button");
+
+    set_label_expand_and_align(&label1);
+    set_label_expand_and_align(&label2);
     
     window
 }
+

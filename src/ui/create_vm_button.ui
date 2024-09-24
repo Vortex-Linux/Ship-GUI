@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object class="GtkButton" id="create_vm_button">
+        <property name="label">Create VM</property>
+        <property name="tooltip_text">Click to create a new vm</property>
+    </object>
+</interface>
+

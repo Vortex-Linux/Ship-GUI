@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object class="GtkButton" id="create_container_button">
+        <property name="label">Create Container</property>
+        <property name="tooltip_text">Click to create a new container</property>
+    </object>
+</interface>
+
