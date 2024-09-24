@@ -34,6 +34,12 @@ fn load_css() {
         gtk4::STYLE_PROVIDER_PRIORITY_APPLICATION,
     );
 }
+fn load_object_with_css<T: IsA<gtk4::glib::Object> + IsA<gtk4::Widget>>(object_builder: &Builder, object_id: &str) -> T {
+    let object: T = object_builder.object(object_id).expect(&format!("failed to get {}", object_id));
+    object.add_css_class(object_id);
+    object 
+}
+
 
 fn set_label_expand_and_align(label: &Label) {
     label.set_hexpand(true);
@@ -51,15 +57,15 @@ fn build_window(app: &Application) -> ApplicationWindow {
     let page2_builder = Builder::from_file(base_folder.join("src/ui/page2.ui").to_str().unwrap());
     let create_container_button_builder = Builder::from_file(base_folder.join("src/ui/create_container_button.ui").to_str().unwrap());
     let create_vm_button_builder = Builder::from_file(base_folder.join("src/ui/create_vm_button.ui").to_str().unwrap());
-    
-    let window: ApplicationWindow = main_window_builder.object("main_window").expect("Failed to get main_window");
+
+    let window: ApplicationWindow = load_object_with_css(&main_window_builder, "main_window");
     window.set_application(Some(app));
-    
-    let main_box: gtk4::Box = main_window_builder.object("main_box").expect("failed to get main_box");
-    let notebook: Notebook = main_window_builder.object("notebook").expect("Failed to get notebook");
-    
-    let page1: gtk4::Box = page1_builder.object("page1").expect("Failed to get page1");
-    let page2: gtk4::Box = page2_builder.object("page2").expect("Failed to get page2");
+
+    let main_box: gtk4::Box = load_object_with_css(&main_window_builder, "main_box");
+    let notebook: Notebook = load_object_with_css(&main_window_builder, "notebook");
+
+    let page1: gtk4::Box = load_object_with_css(&page1_builder, "page1");
+    let page2: gtk4::Box = load_object_with_css(&page2_builder, "page2");
 
     let label1 = Label::new(Some("Containers"));
     let label2 = Label::new(Some("Virtual Machines"));
@@ -72,15 +78,6 @@ fn build_window(app: &Application) -> ApplicationWindow {
 
     page1.append(&create_container_button);  
     page2.append(&create_vm_button);
-
-    main_box.add_css_class("main_box");
-    notebook.add_css_class("notebook");
-    page1.add_css_class("page1");
-    page2.add_css_class("page2");
-    label1.add_css_class("label1");
-    label2.add_css_class("label2");
-    label1.add_css_class("create_container_button");
-    label2.add_css_class("create_vm_button");
 
     set_label_expand_and_align(&label1);
     set_label_expand_and_align(&label2);
