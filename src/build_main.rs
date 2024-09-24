@@ -47,41 +47,43 @@ fn set_label_expand_and_align(label: &Label) {
     label.set_halign(gtk4::Align::Fill);
     label.set_valign(gtk4::Align::Center);
 }
- 
+
+fn create_page_with_label(page_id: &str, label_text: &str, base_folder: &PathBuf) -> (gtk4::Box, Label) {
+    let page_builder = Builder::from_file(base_folder.join(format!("src/ui/{}.ui", page_id)).to_str().unwrap());
+    let page: gtk4::Box = load_object_with_css(&page_builder, page_id);
+    let label = Label::new(Some(label_text));
+    set_label_expand_and_align(&label);
+
+    label.add_css_class(&format!("{}-heading", page_id));
+
+    (page, label)
+}
+
+fn load_buttons_to_page(base_folder: &PathBuf, page: &gtk4::Box, button_id: &str, error_message: &str) {
+    let button_builder = Builder::from_file(base_folder.join(format!("src/ui/{}.ui", button_id)).to_str().unwrap());
+    let button: gtk4::Button = button_builder.object(button_id).expect(&format!("Failed to get {}", error_message));
+    page.append(&button);
+}
+
 fn build_window(app: &Application) -> ApplicationWindow {
-
     let base_folder = get_base_folder();
-    
-    let main_window_builder = Builder::from_file(base_folder.join("src/ui/main_window.ui").to_str().unwrap());
-    let page1_builder = Builder::from_file(base_folder.join("src/ui/page1.ui").to_str().unwrap());
-    let page2_builder = Builder::from_file(base_folder.join("src/ui/page2.ui").to_str().unwrap());
-    let create_container_button_builder = Builder::from_file(base_folder.join("src/ui/create_container_button.ui").to_str().unwrap());
-    let create_vm_button_builder = Builder::from_file(base_folder.join("src/ui/create_vm_button.ui").to_str().unwrap());
 
+    let main_window_builder = Builder::from_file(base_folder.join("src/ui/main_window.ui").to_str().unwrap());
     let window: ApplicationWindow = load_object_with_css(&main_window_builder, "main_window");
     window.set_application(Some(app));
 
-    let main_box: gtk4::Box = load_object_with_css(&main_window_builder, "main_box");
+    let _main_box: gtk4::Box = load_object_with_css(&main_window_builder, "main_box");
     let notebook: Notebook = load_object_with_css(&main_window_builder, "notebook");
 
-    let page1: gtk4::Box = load_object_with_css(&page1_builder, "page1");
-    let page2: gtk4::Box = load_object_with_css(&page2_builder, "page2");
+    let (page1, label1) = create_page_with_label("page1", "Containers", &base_folder);
+    let (page2, label2) = create_page_with_label("page2", "Virtual Machines", &base_folder);
 
-    let label1 = Label::new(Some("Containers"));
-    let label2 = Label::new(Some("Virtual Machines"));
-
-    let create_container_button: gtk4::Button = create_container_button_builder.object("create_container_button").expect("Failed to get Create Container button");
-    let create_vm_button: gtk4::Button = create_vm_button_builder.object("create_vm_button").expect("Failed to get Create VM button"); 
- 
     notebook.append_page(&page1, Some(&label1));
     notebook.append_page(&page2, Some(&label2));
 
-    page1.append(&create_container_button);  
-    page2.append(&create_vm_button);
+    load_buttons_to_page(&base_folder, &page1, "create_container_button", "Create Container button");
+    load_buttons_to_page(&base_folder, &page2, "create_vm_button", "Create VM button");
 
-    set_label_expand_and_align(&label1);
-    set_label_expand_and_align(&label2);
-    
     window
 }
 
