@@ -12,7 +12,7 @@ fn get_vm_list() -> Vec<String> {
     output_str.lines().map(String::from).collect()
 }
 
-fn get_ctr_list() -> Vec<String> {
+fn get_container_list() -> Vec<String> {
     let output = Command::new("sh")
         .arg("-c")
         .arg("ship --ctr list | awk '{print $3}' | tail -n +2 | sed '/^$/d'")

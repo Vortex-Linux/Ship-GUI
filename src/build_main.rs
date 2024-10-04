@@ -1,8 +1,10 @@
 use gdk4::Display;
 use gtk4::prelude::*;
-use gtk4::{Application, ApplicationWindow, Builder, Label, Notebook, CssProvider};
+use gtk4::{Application, ApplicationWindow, Builder, Label, Notebook, CssProvider, GestureClick, Menu, MenuItem};
 use gio::File;
 use std::path::PathBuf;
+
+mod ship_commands; 
 
 pub fn build_app() -> Application {
     let gtk_env = super::gtk_env::GtkEnv::init();
@@ -65,6 +67,62 @@ fn load_buttons_to_page(base_folder: &PathBuf, page: &gtk4::Box, button_id: &str
     page.append(&button);
 }
 
+fn add_vm_buttons_to_page(base_folder: &PathBuf, page: &gtk4::Box) {
+    let vm_list = ship_commands::get_vm_list();
+
+    for vm in vm_list {
+        load_buttons_to_page(base_folder, page, &vm, "VM button");
+
+        let button: Button = page.last_child().unwrap().downcast().unwrap();
+
+        let click_gesture = GestureClick::new();
+        click_gesture.set_button(3);
+        button.add_controller(&click_gesture);
+
+        click_gesture.connect_pressed(move |_gesture, _n_press, x, y| {
+            let menu = Menu::new();
+            let start_item = MenuItem::with_label("Start VM");
+            let stop_item = MenuItem::with_label("Stop VM");
+            let delete_item = MenuItem::with_label("Delete VM");
+
+            menu.append(&start_item);
+            menu.append(&stop_item);
+            menu.append(&delete_item);
+
+            menu.show_all();
+            menu.popup_at_pointer(None);
+        });
+    }
+}
+
+fn add_container_buttons_to_page(base_folder: &PathBuf, page: &gtk4::Box) {
+    let container_list = ship_commands::get_container_list();
+
+    for container in container_list {
+        load_buttons_to_page(base_folder, page, &container, "Container button");
+
+        let button: Button = page.last_child().unwrap().downcast().unwrap();
+
+        let click_gesture = GestureClick::new();
+        click_gesture.set_button(3);
+        button.add_controller(&click_gesture);
+
+        click_gesture.connect_pressed(move |_gesture, _n_press, x, y| {
+            let menu = Menu::new();
+            let start_item = MenuItem::with_label("Start Container");
+            let stop_item = MenuItem::with_label("Stop Container");
+            let delete_item = MenuItem::with_label("Delete Container");
+
+            menu.append(&start_item);
+            menu.append(&stop_item);
+            menu.append(&delete_item);
+
+            menu.show_all();
+            menu.popup_at_pointer(None);
+        });
+    }
+} 
+
 fn build_window(app: &Application) -> ApplicationWindow {
     let base_folder = get_base_folder();
 
@@ -80,6 +138,9 @@ fn build_window(app: &Application) -> ApplicationWindow {
 
     notebook.append_page(&page1, Some(&label1));
     notebook.append_page(&page2, Some(&label2));
+
+    add_container_buttons_to_page(&base_folder, &page1); 
+    add_vm_buttons_to_page(&base_folder, &page2); 
 
     load_buttons_to_page(&base_folder, &page1, "create_container_button", "Create Container button");
     load_buttons_to_page(&base_folder, &page2, "create_vm_button", "Create VM button");
