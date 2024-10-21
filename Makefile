@@ -53,9 +53,11 @@ OBJECTS_DIR   = build/obj/
 ####### Files
 
 SOURCES       = src/main.cpp \
-		src/nav.cpp build/moc/moc_nav.cpp
+		src/nav.cpp qrc_resources.cpp \
+		build/moc/moc_nav.cpp
 OBJECTS       = build/obj/main.o \
 		build/obj/nav.o \
+		build/obj/qrc_resources.o \
 		build/obj/moc_nav.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -509,7 +511,8 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		Ship-GUI.pro
+		Ship-GUI.pro \
+		resources.qrc
 	$(QMAKE) -o Makefile Ship-GUI.pro
 /usr/lib/qt/mkspecs/features/spec_pre.prf:
 /usr/lib/qt/mkspecs/common/unix.conf:
@@ -731,6 +734,7 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 /usr/lib/qt/mkspecs/features/yacc.prf:
 /usr/lib/qt/mkspecs/features/lex.prf:
 Ship-GUI.pro:
+resources.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile Ship-GUI.pro
 
@@ -745,6 +749,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents include/nav.h $(DISTDIR)/
 	$(COPY_FILE) --parents src/main.cpp src/nav.cpp $(DISTDIR)/
@@ -772,8 +777,14 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: resources.qrc \
+		/usr/bin/rcc \
+		styles/styles.qss
+	/usr/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
+
 compiler_moc_predefs_make_all: build/moc/moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) build/moc/moc_predefs.h
@@ -806,7 +817,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -817,6 +828,9 @@ build/obj/main.o: src/main.cpp include/nav.h \
 build/obj/nav.o: src/nav.cpp include/nav.h \
 		build/ui/ui_nav.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/nav.o src/nav.cpp
+
+build/obj/qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/qrc_resources.o qrc_resources.cpp
 
 build/obj/moc_nav.o: build/moc/moc_nav.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_nav.o build/moc/moc_nav.cpp
