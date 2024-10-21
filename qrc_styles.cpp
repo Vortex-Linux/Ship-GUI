@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // /home/arun/VortexLinux/Ship-GUI/styles/styles.qss
+  // /home/arun/VortexLinux/Ship-GUI/resources/styles/styles.qss
   0x0,0x0,0x0,0x29,
   0x51,
   0x57,0x69,0x64,0x67,0x65,0x74,0x20,0x7b,0xa,0x20,0x20,0x20,0x20,0x62,0x61,0x63,
@@ -42,7 +42,7 @@ static const unsigned char qt_resource_struct[] = {
 0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,
   // :/styles/styles/styles.qss
   0x0,0x0,0x0,0x12,0x0,0x0,0x0,0x0,0x0,0x1,0x0,0x0,0x0,0x0,
-0x0,0x0,0x1,0x92,0xae,0xe9,0x66,0x69,
+0x0,0x0,0x1,0x92,0xae,0xf2,0xa9,0x43,
 
 };
 
@@ -69,8 +69,8 @@ bool qUnregisterResourceData(int, const unsigned char *, const unsigned char *, 
 }
 #endif
 
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_resources)();
-int QT_RCC_MANGLE_NAMESPACE(qInitResources_resources)()
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_styles)();
+int QT_RCC_MANGLE_NAMESPACE(qInitResources_styles)()
 {
     int version = 3;
     QT_RCC_PREPEND_NAMESPACE(qRegisterResourceData)
@@ -78,8 +78,8 @@ int QT_RCC_MANGLE_NAMESPACE(qInitResources_resources)()
     return 1;
 }
 
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_resources)();
-int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_resources)()
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_styles)();
+int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_styles)()
 {
     int version = 3;
     QT_RCC_PREPEND_NAMESPACE(qUnregisterResourceData)
@@ -89,7 +89,7 @@ int QT_RCC_MANGLE_NAMESPACE(qCleanupResources_resources)()
 
 namespace {
    struct initializer {
-       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_resources)(); }
-       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_resources)(); }
+       initializer() { QT_RCC_MANGLE_NAMESPACE(qInitResources_styles)(); }
+       ~initializer() { QT_RCC_MANGLE_NAMESPACE(qCleanupResources_styles)(); }
    } dummy;
 }

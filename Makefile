@@ -53,11 +53,13 @@ OBJECTS_DIR   = build/obj/
 ####### Files
 
 SOURCES       = src/main.cpp \
-		src/nav.cpp qrc_resources.cpp \
+		src/nav.cpp qrc_styles.cpp \
+		qrc_images.cpp \
 		build/moc/moc_nav.cpp
 OBJECTS       = build/obj/main.o \
 		build/obj/nav.o \
-		build/obj/qrc_resources.o \
+		build/obj/qrc_styles.o \
+		build/obj/qrc_images.o \
 		build/obj/moc_nav.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -512,7 +514,8 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		Ship-GUI.pro \
-		resources.qrc
+		resources/styles.qrc \
+		resources/images.qrc
 	$(QMAKE) -o Makefile Ship-GUI.pro
 /usr/lib/qt/mkspecs/features/spec_pre.prf:
 /usr/lib/qt/mkspecs/common/unix.conf:
@@ -734,7 +737,8 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 /usr/lib/qt/mkspecs/features/yacc.prf:
 /usr/lib/qt/mkspecs/features/lex.prf:
 Ship-GUI.pro:
-resources.qrc:
+resources/styles.qrc:
+resources/images.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile Ship-GUI.pro
 
@@ -749,7 +753,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents resources.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents resources/styles.qrc resources/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents include/nav.h $(DISTDIR)/
 	$(COPY_FILE) --parents src/main.cpp src/nav.cpp $(DISTDIR)/
@@ -777,13 +781,17 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_resources.cpp
+compiler_rcc_make_all: qrc_styles.cpp qrc_images.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_resources.cpp
-qrc_resources.cpp: resources.qrc \
+	-$(DEL_FILE) qrc_styles.cpp qrc_images.cpp
+qrc_styles.cpp: resources/styles.qrc \
 		/usr/bin/rcc \
-		styles/styles.qss
-	/usr/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
+		resources/styles/styles.qss
+	/usr/bin/rcc -name styles resources/styles.qrc -o qrc_styles.cpp
+
+qrc_images.cpp: resources/images.qrc \
+		/usr/bin/rcc
+	/usr/bin/rcc -name images resources/images.qrc -o qrc_images.cpp
 
 compiler_moc_predefs_make_all: build/moc/moc_predefs.h
 compiler_moc_predefs_clean:
@@ -829,8 +837,11 @@ build/obj/nav.o: src/nav.cpp include/nav.h \
 		build/ui/ui_nav.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/nav.o src/nav.cpp
 
-build/obj/qrc_resources.o: qrc_resources.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/qrc_resources.o qrc_resources.cpp
+build/obj/qrc_styles.o: qrc_styles.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/qrc_styles.o qrc_styles.cpp
+
+build/obj/qrc_images.o: qrc_images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/qrc_images.o qrc_images.cpp
 
 build/obj/moc_nav.o: build/moc/moc_nav.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_nav.o build/moc/moc_nav.cpp
