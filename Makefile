@@ -786,6 +786,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_styles.cpp qrc_images.cpp
 qrc_styles.cpp: resources/styles.qrc \
 		/usr/bin/rcc \
+		resources/styles/nav.qss \
 		resources/styles/styles.qss
 	/usr/bin/rcc -name styles resources/styles.qrc -o qrc_styles.cpp
 
