@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ui version="4.0">
     <class>Nav</class>
-    <widget class="QWidget" name="Nav">
+    <widget class="QWidget" name="ContainerPage">
         <property name="geometry">
             <rect>
                 <x>100</x>
