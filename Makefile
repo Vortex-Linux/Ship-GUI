@@ -55,18 +55,22 @@ OBJECTS_DIR   = build/obj/
 SOURCES       = src/container_page.cpp \
 		src/main.cpp \
 		src/nav.cpp \
-		src/utils.cpp qrc_styles.cpp \
+		src/utils.cpp \
+		src/vm_page.cpp qrc_styles.cpp \
 		qrc_images.cpp \
 		build/moc/moc_container_page.cpp \
-		build/moc/moc_nav.cpp
+		build/moc/moc_nav.cpp \
+		build/moc/moc_vm_page.cpp
 OBJECTS       = build/obj/container_page.o \
 		build/obj/main.o \
 		build/obj/nav.o \
 		build/obj/utils.o \
+		build/obj/vm_page.o \
 		build/obj/qrc_styles.o \
 		build/obj/qrc_images.o \
 		build/obj/moc_container_page.o \
-		build/obj/moc_nav.o
+		build/obj/moc_nav.o \
+		build/obj/moc_vm_page.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -287,10 +291,12 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		Ship-GUI.pro include/container_page.h \
-		include/nav.h src/container_page.cpp \
+		include/nav.h \
+		include/vm_page.h src/container_page.cpp \
 		src/main.cpp \
 		src/nav.cpp \
-		src/utils.cpp
+		src/utils.cpp \
+		src/vm_page.cpp
 QMAKE_TARGET  = Ship-GUI
 DESTDIR       = build/
 TARGET        = build/Ship-GUI
@@ -299,7 +305,7 @@ TARGET        = build/Ship-GUI
 first: all
 ####### Build rules
 
-build/Ship-GUI: build/ui/ui_container_page.h build/ui/ui_nav.h $(OBJECTS)  
+build/Ship-GUI: build/ui/ui_container_page.h build/ui/ui_nav.h build/ui/ui_vm_page.h $(OBJECTS)  
 	@test -d build/ || mkdir -p build/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -764,9 +770,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources/styles.qrc resources/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/container_page.h include/nav.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/container_page.cpp src/main.cpp src/nav.cpp src/utils.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ui/container_page.ui ui/nav.ui $(DISTDIR)/
+	$(COPY_FILE) --parents include/container_page.h include/nav.h include/vm_page.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/container_page.cpp src/main.cpp src/nav.cpp src/utils.cpp src/vm_page.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ui/container_page.ui ui/nav.ui ui/vm_page.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -796,6 +802,7 @@ compiler_rcc_clean:
 qrc_styles.cpp: resources/styles.qrc \
 		/usr/bin/rcc \
 		resources/styles/container_page.qss \
+		resources/styles/vm_page.qss \
 		resources/styles/nav.qss \
 		resources/styles/styles.qss
 	/usr/bin/rcc -name styles resources/styles.qrc -o qrc_styles.cpp
@@ -810,9 +817,9 @@ compiler_moc_predefs_clean:
 build/moc/moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -dM -E -o build/moc/moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: build/moc/moc_container_page.cpp build/moc/moc_nav.cpp
+compiler_moc_header_make_all: build/moc/moc_container_page.cpp build/moc/moc_nav.cpp build/moc/moc_vm_page.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) build/moc/moc_container_page.cpp build/moc/moc_nav.cpp
+	-$(DEL_FILE) build/moc/moc_container_page.cpp build/moc/moc_nav.cpp build/moc/moc_vm_page.cpp
 build/moc/moc_container_page.cpp: include/container_page.h \
 		build/ui/ui_container_page.h \
 		build/moc/moc_predefs.h \
@@ -825,13 +832,19 @@ build/moc/moc_nav.cpp: include/nav.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/nav.h -o build/moc/moc_nav.cpp
 
+build/moc/moc_vm_page.cpp: include/vm_page.h \
+		build/ui/ui_vm_page.h \
+		build/moc/moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/vm_page.h -o build/moc/moc_vm_page.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: build/ui/ui_container_page.h build/ui/ui_nav.h
+compiler_uic_make_all: build/ui/ui_container_page.h build/ui/ui_nav.h build/ui/ui_vm_page.h
 compiler_uic_clean:
-	-$(DEL_FILE) build/ui/ui_container_page.h build/ui/ui_nav.h
+	-$(DEL_FILE) build/ui/ui_container_page.h build/ui/ui_nav.h build/ui/ui_vm_page.h
 build/ui/ui_container_page.h: ui/container_page.ui \
 		/usr/bin/uic
 	/usr/bin/uic ui/container_page.ui -o build/ui/ui_container_page.h
@@ -839,6 +852,10 @@ build/ui/ui_container_page.h: ui/container_page.ui \
 build/ui/ui_nav.h: ui/nav.ui \
 		/usr/bin/uic
 	/usr/bin/uic ui/nav.ui -o build/ui/ui_nav.h
+
+build/ui/ui_vm_page.h: ui/vm_page.ui \
+		/usr/bin/uic
+	/usr/bin/uic ui/vm_page.ui -o build/ui/ui_vm_page.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -857,7 +874,9 @@ build/obj/container_page.o: src/container_page.cpp include/container_page.h \
 build/obj/main.o: src/main.cpp include/nav.h \
 		build/ui/ui_nav.h \
 		include/container_page.h \
-		build/ui/ui_container_page.h
+		build/ui/ui_container_page.h \
+		include/vm_page.h \
+		build/ui/ui_vm_page.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
 build/obj/nav.o: src/nav.cpp include/nav.h \
@@ -866,6 +885,10 @@ build/obj/nav.o: src/nav.cpp include/nav.h \
 
 build/obj/utils.o: src/utils.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/utils.o src/utils.cpp
+
+build/obj/vm_page.o: src/vm_page.cpp include/vm_page.h \
+		build/ui/ui_vm_page.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/vm_page.o src/vm_page.cpp
 
 build/obj/qrc_styles.o: qrc_styles.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/qrc_styles.o qrc_styles.cpp
@@ -878,6 +901,9 @@ build/obj/moc_container_page.o: build/moc/moc_container_page.cpp
 
 build/obj/moc_nav.o: build/moc/moc_nav.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_nav.o build/moc/moc_nav.cpp
+
+build/obj/moc_vm_page.o: build/moc/moc_vm_page.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_vm_page.o build/moc/moc_vm_page.cpp
 
 ####### Install
 

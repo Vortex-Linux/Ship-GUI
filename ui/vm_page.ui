@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui version="4.0">
+    <class>VMPage</class>
+    <widget class="QWidget" name="VMPage">
+        <property name="geometry">
+            <rect>
+                <x>100</x>
+                <y>100</y>
+                <width>800</width>
+                <height>100</height>
+            </rect>
+        </property>
+        <widget class="QPushButton" name="vm_button">
+            <property name="text">
+                <string>Virtual Machines</string>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>30</x>
+                    <y>30</y>
+                    <width>300</width>
+                    <height>50</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="container_button">
+            <property name="text">
+                <string>Containers</string>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>400</x>
+                    <y>30</y>
+                    <width>300</width>
+                    <height>50</height>
+                </rect>
+            </property>
+        </widget>
+    </widget>
+</ui>
+
