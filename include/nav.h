@@ -11,6 +11,9 @@ public:
     explicit Nav(QWidget *parent = nullptr);
     ~Nav();
 
+signals:
+    void buttonClicked(const QString &buttonName); 
+
 private:
     Ui::Nav *ui;  
 };

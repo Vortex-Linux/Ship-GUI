@@ -34,12 +34,13 @@ int main(int argc, char *argv[]) {
     loadAppStyleSheet(app, ":/styles/styles/styles.qss");
 
     QWidget mainWindow;
-
     QVBoxLayout* layout = new QVBoxLayout(&mainWindow);
 
-    Nav *nav = new Nav(); 
-    ContainerPage *container_page = new ContainerPage();
-    VMPage *vm_page = new VMPage();
+    QStackedWidget *stackedWidget = new QStackedWidget();
+
+    Nav *nav = new Nav();  
+    ContainerPage *container_page = new ContainerPage();  
+    VMPage *vm_page = new VMPage();  
 
     loadWidgetStyleSheet(nav, ":/styles/styles/nav.qss");
     loadWidgetStyleSheet(container_page, ":/styles/styles/container_page.qss");
@@ -47,13 +48,22 @@ int main(int argc, char *argv[]) {
 
     nav->setFixedSize(800, 100);  
     container_page->setFixedSize(800, 100);  
-    vm_page->setFixedSize(800, 100);  
+    vm_page->setFixedSize(800, 100);
 
-    layout->addWidget(nav);  
-    layout->addWidget(container_page);  
-    layout->addWidget(vm_page);  
+    stackedWidget->addWidget(container_page); 
+    stackedWidget->addWidget(vm_page);       
 
+    layout->addWidget(nav);       
+    layout->addWidget(stackedWidget);  
     mainWindow.setLayout(layout);
+
+    QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
+        if (buttonName == "containers") {
+            stackedWidget->setCurrentWidget(container_page);  
+        } else if (buttonName == "virtual_machines") {
+            stackedWidget->setCurrentWidget(vm_page);  
+        }
+    });
 
     mainWindow.show();
 

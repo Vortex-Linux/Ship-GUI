@@ -12,7 +12,7 @@
         </property>
         <widget class="QPushButton" name="vm_button">
             <property name="text">
-                <string>Virtual Machines</string>
+                <string>Virtual Machines v</string>
             </property>
             <property name="geometry">
                 <rect>
@@ -25,7 +25,7 @@
         </widget>
         <widget class="QPushButton" name="container_button">
             <property name="text">
-                <string>Containers</string>
+                <string>Containers v</string>
             </property>
             <property name="geometry">
                 <rect>
