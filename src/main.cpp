@@ -1,6 +1,9 @@
 #include <QApplication>
 #include <QFile>
+#include <QWidget>
+#include <QVBoxLayout>
 #include "../include/nav.h"  
+#include "../include/container_page.h"  
 
 void loadAppStyleSheet(QApplication &app, const QString &fileName) {
     QFile file(fileName);
@@ -22,16 +25,30 @@ void loadWidgetStyleSheet(QWidget *widget, const QString &fileName) {
     }
 }
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     loadAppStyleSheet(app, ":/styles/styles/styles.qss");
 
-    Nav nav; 
+    QWidget mainWindow;
 
-    loadWidgetStyleSheet(&nav, ":/styles/styles/nav.qss");
-    nav.show();  
+    QVBoxLayout* layout = new QVBoxLayout(&mainWindow);
+
+    Nav *nav = new Nav(); 
+    ContainerPage *container_page = new ContainerPage();
+
+    loadWidgetStyleSheet(nav, ":/styles/styles/nav.qss");
+    loadWidgetStyleSheet(container_page, ":/styles/styles/container_page.qss");
+
+    nav->setFixedSize(800, 100);  
+    container_page->setFixedSize(800, 100);  
+
+    layout->addWidget(nav);  
+    layout->addWidget(container_page);  
+
+    mainWindow.setLayout(layout);
+
+    mainWindow.show();
 
     return app.exec();
 }
-

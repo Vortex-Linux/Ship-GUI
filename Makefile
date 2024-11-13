@@ -795,6 +795,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_styles.cpp qrc_images.cpp
 qrc_styles.cpp: resources/styles.qrc \
 		/usr/bin/rcc \
+		resources/styles/container_page.qss \
 		resources/styles/nav.qss \
 		resources/styles/styles.qss
 	/usr/bin/rcc -name styles resources/styles.qrc -o qrc_styles.cpp
@@ -854,7 +855,9 @@ build/obj/container_page.o: src/container_page.cpp include/container_page.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/container_page.o src/container_page.cpp
 
 build/obj/main.o: src/main.cpp include/nav.h \
-		build/ui/ui_nav.h
+		build/ui/ui_nav.h \
+		include/container_page.h \
+		build/ui/ui_container_page.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
 build/obj/nav.o: src/nav.cpp include/nav.h \
