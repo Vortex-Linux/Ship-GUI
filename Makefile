@@ -53,11 +53,13 @@ OBJECTS_DIR   = build/obj/
 ####### Files
 
 SOURCES       = src/main.cpp \
-		src/nav.cpp qrc_styles.cpp \
+		src/nav.cpp \
+		src/utils.cpp qrc_styles.cpp \
 		qrc_images.cpp \
 		build/moc/moc_nav.cpp
 OBJECTS       = build/obj/main.o \
 		build/obj/nav.o \
+		build/obj/utils.o \
 		build/obj/qrc_styles.o \
 		build/obj/qrc_images.o \
 		build/obj/moc_nav.o
@@ -281,7 +283,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		Ship-GUI.pro include/nav.h src/main.cpp \
-		src/nav.cpp
+		src/nav.cpp \
+		src/utils.cpp
 QMAKE_TARGET  = Ship-GUI
 DESTDIR       = build/
 TARGET        = build/Ship-GUI
@@ -756,7 +759,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents resources/styles.qrc resources/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents include/nav.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/main.cpp src/nav.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/main.cpp src/nav.cpp src/utils.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/nav.ui $(DISTDIR)/
 
 
@@ -837,6 +840,9 @@ build/obj/main.o: src/main.cpp include/nav.h \
 build/obj/nav.o: src/nav.cpp include/nav.h \
 		build/ui/ui_nav.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/nav.o src/nav.cpp
+
+build/obj/utils.o: src/utils.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/utils.o src/utils.cpp
 
 build/obj/qrc_styles.o: qrc_styles.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/qrc_styles.o qrc_styles.cpp

@@ -3,13 +3,11 @@ TARGET = Ship-GUI
 
 QT += core gui widgets
 
-# Source files
-SOURCES += src/main.cpp \
-           src/nav.cpp
+SOURCES += $$files($$PWD/src/*.cpp, true)
 
-HEADERS += include/nav.h
+HEADERS += $$files($$PWD/include/*.h, true)
 
-FORMS += ui/nav.ui
+FORMS += $$files($$PWD/ui/*.ui, true)
 
 DESTDIR = build
 

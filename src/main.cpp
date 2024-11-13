@@ -22,8 +22,7 @@ void loadWidgetStyleSheet(QWidget *widget, const QString &fileName) {
     }
 }
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]){
     QApplication app(argc, argv);
 
     loadAppStyleSheet(app, ":/styles/styles/styles.qss");
