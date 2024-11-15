@@ -7,26 +7,7 @@
 #include "../include/nav.h"  
 #include "../include/container_page.h"  
 #include "../include/vm_page.h"  
-
-void loadAppStyleSheet(QApplication &app, const QString &fileName) {
-    QFile file(fileName);
-    if (file.open(QFile::ReadOnly)) {
-        QString styleSheet = QLatin1String(file.readAll());
-        app.setStyleSheet(styleSheet);
-    } else {
-        qWarning("Could not open stylesheet file: %s", qPrintable(file.errorString()));
-    }
-}
-
-void loadWidgetStyleSheet(QWidget *widget, const QString &fileName) {
-    QFile file(fileName);
-    if (file.open(QFile::ReadOnly)) {
-        QString styleSheet = QLatin1String(file.readAll());
-        widget->setStyleSheet(styleSheet);
-    } else {
-        qWarning("Could not open stylesheet file: %s", qPrintable(file.errorString()));
-    }
-}
+#include "../include/utils.h"  
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
