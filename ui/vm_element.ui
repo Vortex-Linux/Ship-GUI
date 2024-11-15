@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ui version="4.0">
-    <class>VMPage</class>
-    <widget class="QWidget" name="VMPage">
+    <class>VMElement</class>
+    <widget class="QWidget" name="VMElement">
         <property name="geometry">
             <rect>
                 <x>100</x>

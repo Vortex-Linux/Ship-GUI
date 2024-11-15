@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ui version="4.0">
-    <class>ContainerPage</class>
-    <widget class="QWidget" name="ContainerPage">
+    <class>ContainerElement</class>
+    <widget class="QWidget" name="ContainerElement">
         <property name="geometry">
             <rect>
                 <x>100</x>

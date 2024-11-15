@@ -5,8 +5,8 @@
 #include <QStackedWidget>
 #include <QVBoxLayout>
 #include "../include/nav.h"  
-#include "../include/container_page.h"  
-#include "../include/vm_page.h"  
+#include "../include/container_element.h"  
+#include "../include/vm_element.h"  
 #include "../include/utils.h"  
 
 int main(int argc, char *argv[]) {
@@ -20,19 +20,19 @@ int main(int argc, char *argv[]) {
     QStackedWidget *stackedWidget = new QStackedWidget();
 
     Nav *nav = new Nav();  
-    ContainerPage *container_page = new ContainerPage();  
-    VMPage *vm_page = new VMPage();  
+    ContainerElement *container_element = new ContainerElement();  
+    VMElement *vm_element = new VMElement();  
 
     loadWidgetStyleSheet(nav, ":/styles/styles/nav.qss");
-    loadWidgetStyleSheet(container_page, ":/styles/styles/container_page.qss");
-    loadWidgetStyleSheet(vm_page, ":/styles/styles/vm_page.qss");
+    loadWidgetStyleSheet(container_element, ":/styles/styles/container_element.qss");
+    loadWidgetStyleSheet(vm_element, ":/styles/styles/vm_element.qss");
 
     nav->setFixedSize(800, 100);  
-    container_page->setFixedSize(800, 100);  
-    vm_page->setFixedSize(800, 100);
+    container_element->setFixedSize(800, 100);  
+    vm_element->setFixedSize(800, 100);
 
-    stackedWidget->addWidget(container_page); 
-    stackedWidget->addWidget(vm_page);       
+    stackedWidget->addWidget(container_element); 
+    stackedWidget->addWidget(vm_element);       
 
     layout->addWidget(nav);       
     layout->addWidget(stackedWidget);  
@@ -42,9 +42,9 @@ int main(int argc, char *argv[]) {
 
     QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
         if (buttonName == "containers") {
-            stackedWidget->setCurrentWidget(container_page);  
+            stackedWidget->setCurrentWidget(container_element);  
         } else if (buttonName == "virtual_machines") {
-            stackedWidget->setCurrentWidget(vm_page);  
+            stackedWidget->setCurrentWidget(vm_element);  
         }
     });
 

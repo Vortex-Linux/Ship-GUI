@@ -1,10 +1,10 @@
-#include "../include/container_page.h"
+#include "../include/container_element.h"
 #include <QMenu>
 #include <QAction>
 #include <QDebug>
 
-ContainerPage::ContainerPage(QWidget *parent)
-    : QWidget(parent), ui(new Ui::ContainerPage), menu(new QMenu(this)) {
+ContainerElement::ContainerElement(QWidget *parent)
+    : QWidget(parent), ui(new Ui::ContainerElement), menu(new QMenu(this)) {
     ui->setupUi(this);
     createMenu(); 
 
@@ -13,27 +13,27 @@ ContainerPage::ContainerPage(QWidget *parent)
     });
 }
 
-void ContainerPage::createMenu() {
+void ContainerElement::createMenu() {
     QAction *startAction = new QAction("Start VM", this);
     QAction *stopAction = new QAction("Stop VM", this);
 
-    connect(startAction, &QAction::triggered, this, &ContainerPage::startVM);
-    connect(stopAction, &QAction::triggered, this, &ContainerPage::stopVM);
+    connect(startAction, &QAction::triggered, this, &ContainerElement::startVM);
+    connect(stopAction, &QAction::triggered, this, &ContainerElement::stopVM);
 
     menu->addAction(startAction);
     menu->addAction(stopAction);
 }
 
-void ContainerPage::startVM() {
+void ContainerElement::startVM() {
     qDebug() << "vm has been started";
 }
 
-void ContainerPage::stopVM() {
+void ContainerElement::stopVM() {
     qDebug() << "vm has been stopped";
 }
 
 
-ContainerPage::~ContainerPage() {
+ContainerElement::~ContainerElement() {
     delete ui;
 }
 
