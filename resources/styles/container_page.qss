@@ -1,7 +1,9 @@
 QFrame {
-    background-color : #7B8794;
+    background-color: #7B8794;
+    max-width: 760px;
+    border-radius: 10px;
 }
 
 QToolButton {
-    background-color : #A0AEC0
+    background-color: #A0AEC0
 }
