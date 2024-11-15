@@ -57,6 +57,8 @@ int main(int argc, char *argv[]) {
     layout->addWidget(stackedWidget);  
     mainWindow.setLayout(layout);
 
+    mainWindow.setFixedSize(800, 800);
+
     QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
         if (buttonName == "containers") {
             stackedWidget->setCurrentWidget(container_page);  

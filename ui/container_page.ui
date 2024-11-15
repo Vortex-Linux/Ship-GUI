@@ -10,32 +10,6 @@
                 <height>100</height>
             </rect>
         </property>
-        <widget class="QPushButton" name="container_button">
-            <property name="text">
-                <string>Containers c</string>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>30</x>
-                    <y>30</y>
-                    <width>300</width>
-                    <height>50</height>
-                </rect>
-            </property>
-        </widget>
-        <widget class="QPushButton" name="vm_button">
-            <property name="text">
-                <string>Virtual Machines c</string>
-            </property>
-            <property name="geometry">
-                <rect>
-                    <x>400</x>
-                    <y>30</y>
-                    <width>300</width>
-                    <height>50</height>
-                </rect>
-            </property>
-        </widget>
     </widget>
 </ui>
 
