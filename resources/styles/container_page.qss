@@ -1,3 +1,7 @@
 QFrame {
-    background-color : #2D2D2D;
+    background-color : #7B8794;
+}
+
+QToolButton {
+    background-color : #A0AEC0
 }
