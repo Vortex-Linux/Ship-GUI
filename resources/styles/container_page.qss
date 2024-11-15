@@ -9,7 +9,40 @@ QLabel {
     font-weight: bold;
 }
 
-
 QToolButton {
     background-color: #A0AEC0
+}
+
+QToolButton:hover {
+    background-color: #BAC6D8; 
+}
+
+QMenu {
+    background-color: #4A5568; 
+    border: 1px solid #2D3748; 
+    border-radius: 5px;
+}
+
+QMenu::item {
+    padding: 8px 12px;
+    color: #E2E8F0; 
+}
+
+QMenu::item:selected {
+    background-color: #2B6CB0; 
+    color: #FFFFFF; 
+}
+
+QMenu::item:disabled {
+    color: #A0AEC0; 
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #2D3748; 
+    margin: 5px 0; 
+}
+
+QMenu::icon {
+    padding-left: 10px; 
 }
