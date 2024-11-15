@@ -10,6 +10,33 @@
                 <height>100</height>
             </rect>
         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+                <widget class="QLabel" name="vmNameLabel">
+                    <property name="text">
+                        <string>debian-vm-base</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QLabel" name="vmStateLabel">
+                    <property name="text">
+                        <string>Shutoff</string>
+                    </property>
+                </widget>
+            </item>
+            <item>
+                <widget class="QToolButton" name="optionsButton">
+                    <property name="text">
+                        <string>⋮</string>
+                    </property>
+                    <property name="popupMode">
+                        <enum>QToolButton::InstantPopup</enum>
+                    </property>
+                </widget>
+            </item>
+        </layout>
     </widget>
+    <resources/>
+    <connections/>
 </ui>
-
