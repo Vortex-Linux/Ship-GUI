@@ -1,8 +1,3 @@
-QLabel {
-    background-color : red;
+QFrame {
+    background-color : #2D2D2D;
 }
-
-QToolButton {
-    background-color : red;
-}
-
