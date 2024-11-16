@@ -1,4 +1,4 @@
-#include "../include/utils.h"
+#include "utils.h"
 
 void loadAppStyleSheet(QApplication &app, const QString &fileName) {
     QFile file(fileName);
