@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QMenu>
 #include "ui_container_element.h"
+#include <QAction>
+#include <QDebug>
 
 class ContainerElement : public QWidget {
     Q_OBJECT

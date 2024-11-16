@@ -1,6 +1,4 @@
 #include "nav.h"
-#include <QStyle>
-#include <QPushButton>
 
 Nav::Nav(QWidget *parent) : QWidget(parent), ui(new Ui::Nav) {
     ui->setupUi(this);

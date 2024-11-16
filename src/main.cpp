@@ -1,13 +1,4 @@
-#include <QApplication>
-#include <QFile>
-#include <QWidget>
-#include <QPushButton>
-#include <QStackedWidget>
-#include <QVBoxLayout>
-#include "../include/nav.h"  
-#include "../include/container_element.h"  
-#include "../include/vm_element.h"  
-#include "../include/utils.h"  
+#include "../include/main.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);

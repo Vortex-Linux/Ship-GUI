@@ -1,7 +1,4 @@
-#include <QApplication>
-#include <QFile>
-#include <QWidget>
-#include <QPushButton>
+#include "../include/utils.h"
 
 void loadAppStyleSheet(QApplication &app, const QString &fileName) {
     QFile file(fileName);
@@ -23,3 +20,24 @@ void loadWidgetStyleSheet(QWidget *widget, const QString &fileName) {
     }
 }
 
+void system_exec(const std::string& cmd) {
+    int return_code = system(cmd.c_str());
+
+    if (return_code != 0) {
+        std::cerr << "Failed to execute command: " << cmd << std::endl;
+        std::exit(EXIT_FAILURE);
+    }
+}
+
+std::string exec(const std::string& cmd) {
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, int (*)(FILE*)> pipe(popen(cmd.c_str(), "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+    return result;
+}

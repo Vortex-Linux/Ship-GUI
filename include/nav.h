@@ -1,8 +1,10 @@
 #ifndef NAV_H
 #define NAV_H
 
-#include <QWidget>
 #include "ui_nav.h"
+#include <QWidget>
+#include <QStyle>
+#include <QPushButton>
 
 class Nav : public QWidget {
     Q_OBJECT
