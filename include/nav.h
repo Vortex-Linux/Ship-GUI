@@ -2,9 +2,7 @@
 #define NAV_H
 
 #include "ui_nav.h"
-#include <QWidget>
-#include <QStyle>
-#include <QPushButton>
+#include "headers.h"
 
 class Nav : public QWidget {
     Q_OBJECT

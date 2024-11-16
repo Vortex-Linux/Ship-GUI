@@ -1,8 +1,8 @@
 #ifndef VM_ELEMENT_H
 #define VM_ELEMENT_H
 
-#include <QWidget>
 #include "ui_vm_element.h"
+#include "headers.h"
 
 class VMElement : public QWidget {
     Q_OBJECT

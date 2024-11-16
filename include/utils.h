@@ -1,12 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <QApplication>
-#include <QWidget>
-#include <QFile>
-#include <QPushButton>
-#include <iostream>
-#include <ostream>
+#include "headers.h"
 
 void loadAppStyleSheet(QApplication &app, const QString &fileName);
 void loadWidgetStyleSheet(QWidget *widget, const QString &fileName);

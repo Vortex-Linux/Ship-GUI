@@ -1,11 +1,8 @@
 #ifndef CONTAINER_ELEMENT_H
 #define CONTAINER_ELEMENT_H
 
-#include <QWidget>
-#include <QMenu>
 #include "ui_container_element.h"
-#include <QAction>
-#include <QDebug>
+#include "headers.h"
 
 class ContainerElement : public QWidget {
     Q_OBJECT
