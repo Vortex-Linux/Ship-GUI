@@ -3,6 +3,7 @@
 ContainerElement::ContainerElement(QWidget *parent)
     : QWidget(parent), ui(new Ui::ContainerElement), menu(new QMenu(this)) {
     ui->setupUi(this);
+    containerNameLabel = this->findChild<QLabel*>("containerNameLabel");
     createMenu(); 
 
     connect(ui->optionsButton, &QToolButton::clicked, this, [this]() {
@@ -29,6 +30,9 @@ void ContainerElement::stopVM() {
     qDebug() << "vm has been stopped";
 }
 
+void ContainerElement::setContainerName(const QString &name) {
+    containerNameLabel->setText(name);  
+}
 
 ContainerElement::~ContainerElement() {
     delete ui;

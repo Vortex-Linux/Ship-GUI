@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <iostream>
 #include <ostream>
+#include <sstream>
 
 #endif // HEADERS_H
 

@@ -41,3 +41,15 @@ std::string exec(const std::string& cmd) {
     }
     return result;
 }
+
+std::vector<std::string> list_items(const std::string& input_text) {
+    std::vector<std::string> item_list;
+    std::istringstream input_stream(input_text);
+    std::string item;
+
+    while (input_stream >> item) {
+        item_list.push_back(item);
+    }
+    return item_list;
+}
+

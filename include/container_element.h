@@ -9,14 +9,16 @@ class ContainerElement : public QWidget {
 
 public:
     explicit ContainerElement(QWidget *parent = nullptr);
+    void setContainerName(const QString &name);
     ~ContainerElement();
 
 private slots:
     void startVM(); 
-    void stopVM();  
+    void stopVM(); 
 
 private:
     Ui::ContainerElement *ui;
+    QLabel *containerNameLabel;
     void createMenu(); 
     QMenu *menu;
 };
