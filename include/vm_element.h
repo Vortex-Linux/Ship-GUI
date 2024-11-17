@@ -9,6 +9,7 @@ class VMElement : public QWidget {
 
 public:
     explicit VMElement(QWidget *parent = nullptr);
+    void setVMName(const QString &name);
     ~VMElement();
 
 private:

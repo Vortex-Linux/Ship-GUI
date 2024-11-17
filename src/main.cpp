@@ -11,21 +11,22 @@ int main(int argc, char *argv[]) {
     Nav* nav = createNav();
     layout->addWidget(nav); 
 
-    std::vector<std::string> containerNames = list_containers(); 
-    QWidget* containerWidget = createContainerWidget(containerNames);
+    std::vector<std::string> containernames = list_containers(); 
+    QWidget* containerWidget = createContainerWidget(containernames);
 
-    VMElement* vmElement = createVMWidget();
+    std::vector<std::string> VMnames = list_vms(); 
+    QWidget* VMWidget = createVMWidget(VMnames);
 
     QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);
-    stackedWidget->addWidget(vmElement);
+    stackedWidget->addWidget(VMWidget);
     layout->addWidget(stackedWidget); 
 
     QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
         if (buttonName == "containers") {
             stackedWidget->setCurrentWidget(containerWidget);
         } else if (buttonName == "virtual_machines") {
-            stackedWidget->setCurrentWidget(vmElement);
+            stackedWidget->setCurrentWidget(VMWidget);
         }
     });
 

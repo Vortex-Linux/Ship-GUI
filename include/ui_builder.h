@@ -9,7 +9,7 @@
 
 Nav* createNav(QWidget* parent = nullptr);
 QWidget* createContainerWidget(const std::vector<std::string>& containerNames);
-VMElement* createVMWidget();
+QWidget* createVMWidget(const std::vector<std::string>& VMNames);
 
 #endif 
 

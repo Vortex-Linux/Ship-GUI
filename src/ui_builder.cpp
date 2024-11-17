@@ -22,9 +22,17 @@ QWidget* createContainerWidget(const std::vector<std::string>& containerNames) {
     return containerWidget;
 }
 
-VMElement* createVMWidget() {
-    VMElement* vmElement = new VMElement();
-    loadWidgetStyleSheet(vmElement, ":/styles/styles/vm_element.qss");
-    vmElement->setFixedSize(800, 100);
-    return vmElement;
+QWidget* createVMWidget(const std::vector<std::string>& VMNames) {
+    QWidget* VMWidget = new QWidget();
+    QVBoxLayout* layout = new QVBoxLayout(VMWidget);
+
+    for (const auto& name : VMNames) {
+        VMElement* element = new VMElement();
+        element->setVMName(QString::fromStdString(name));
+        loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
+        element->setFixedSize(800, 100);
+        layout->addWidget(element);
+    }
+
+    return VMWidget;
 }

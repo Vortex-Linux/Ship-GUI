@@ -5,6 +5,10 @@ VMElement::VMElement(QWidget *parent)
     ui->setupUi(this);
 }
 
+void VMElement::setVMName(const QString &name) {
+    VMNameLabel->setText(name);  
+}
+
 VMElement::~VMElement() {
     delete ui;
 }
