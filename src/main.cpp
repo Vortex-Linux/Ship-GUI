@@ -8,53 +8,29 @@ int main(int argc, char *argv[]) {
     QWidget mainWindow;
     QVBoxLayout* layout = new QVBoxLayout(&mainWindow);
 
-    QStackedWidget *stackedWidget = new QStackedWidget();
+    Nav* nav = createNav();
+    layout->addWidget(nav); 
 
-    Nav *nav = new Nav();
-    loadWidgetStyleSheet(nav, ":/styles/styles/nav.qss");
+    std::vector<std::string> containerNames = list_containers(); 
+    QWidget* containerWidget = createContainerWidget(containerNames);
 
-    nav->setFixedSize(800, 100);   
+    VMElement* vmElement = createVMWidget();
 
-    QWidget *containerWidget = new QWidget();
-    QVBoxLayout *containerLayout = new QVBoxLayout(containerWidget); 
-
-    std::vector<std::string> container_names = list_containers();
-
-    for (const auto& name : container_names) {
-        ContainerElement* container_element = new ContainerElement();
-        container_element->setContainerName(QString::fromStdString(name));
-
-        loadWidgetStyleSheet(container_element, ":/styles/styles/container_element.qss");
-
-        containerLayout->addWidget(container_element);
-        
-        container_element->setFixedSize(800, 100);  
-    }
-
-    VMElement *vm_element = new VMElement();  
-    loadWidgetStyleSheet(vm_element, ":/styles/styles/vm_element.qss");
-
-    vm_element->setFixedSize(800, 100);  
-
+    QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);
-
-    stackedWidget->addWidget(vm_element); 
-
-    layout->addWidget(nav);  
-    layout->addWidget(stackedWidget);  
-
-    mainWindow.setLayout(layout);
-
-    mainWindow.setFixedSize(800, 800);  
+    stackedWidget->addWidget(vmElement);
+    layout->addWidget(stackedWidget); 
 
     QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
         if (buttonName == "containers") {
-            stackedWidget->setCurrentWidget(containerWidget);  
+            stackedWidget->setCurrentWidget(containerWidget);
         } else if (buttonName == "virtual_machines") {
-            stackedWidget->setCurrentWidget(vm_element);  
+            stackedWidget->setCurrentWidget(vmElement);
         }
     });
 
+    mainWindow.setLayout(layout);
+    mainWindow.setFixedSize(800, 800);
     mainWindow.show();
 
     return app.exec();

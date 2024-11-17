@@ -56,6 +56,7 @@ SOURCES       = src/container_element.cpp \
 		src/container_operations.cpp \
 		src/main.cpp \
 		src/nav.cpp \
+		src/ui_builder.cpp \
 		src/utils.cpp \
 		src/vm_element.cpp \
 		src/vm_operations.cpp qrc_styles.cpp \
@@ -67,6 +68,7 @@ OBJECTS       = build/obj/container_element.o \
 		build/obj/container_operations.o \
 		build/obj/main.o \
 		build/obj/nav.o \
+		build/obj/ui_builder.o \
 		build/obj/utils.o \
 		build/obj/vm_element.o \
 		build/obj/vm_operations.o \
@@ -296,13 +298,17 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		Ship-GUI.pro include/container_element.h \
 		include/container_operations.h \
+		include/headers.h \
+		include/main.h \
 		include/nav.h \
+		include/ui_builder.h \
 		include/utils.h \
 		include/vm_element.h \
 		include/vm_operations.h src/container_element.cpp \
 		src/container_operations.cpp \
 		src/main.cpp \
 		src/nav.cpp \
+		src/ui_builder.cpp \
 		src/utils.cpp \
 		src/vm_element.cpp \
 		src/vm_operations.cpp
@@ -779,8 +785,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources/styles.qrc resources/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/container_element.h include/container_operations.h include/nav.h include/utils.h include/vm_element.h include/vm_operations.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/container_element.cpp src/container_operations.cpp src/main.cpp src/nav.cpp src/utils.cpp src/vm_element.cpp src/vm_operations.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents include/container_element.h include/container_operations.h include/headers.h include/main.h include/nav.h include/ui_builder.h include/utils.h include/vm_element.h include/vm_operations.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/container_element.cpp src/container_operations.cpp src/main.cpp src/nav.cpp src/ui_builder.cpp src/utils.cpp src/vm_element.cpp src/vm_operations.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ui/container_element.ui ui/nav.ui ui/vm_element.ui $(DISTDIR)/
 
 
@@ -831,18 +837,21 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) build/moc/moc_container_element.cpp build/moc/moc_nav.cpp build/moc/moc_vm_element.cpp
 build/moc/moc_container_element.cpp: include/container_element.h \
 		build/ui/ui_container_element.h \
+		include/headers.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/container_element.h -o build/moc/moc_container_element.cpp
 
 build/moc/moc_nav.cpp: include/nav.h \
 		build/ui/ui_nav.h \
+		include/headers.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/nav.h -o build/moc/moc_nav.cpp
 
 build/moc/moc_vm_element.cpp: include/vm_element.h \
 		build/ui/ui_vm_element.h \
+		include/headers.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/vm_element.h -o build/moc/moc_vm_element.cpp
@@ -876,30 +885,55 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-build/obj/container_element.o: src/container_element.cpp 
+build/obj/container_element.o: src/container_element.cpp include/container_element.h \
+		build/ui/ui_container_element.h \
+		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/container_element.o src/container_element.cpp
 
-build/obj/container_operations.o: src/container_operations.cpp 
+build/obj/container_operations.o: src/container_operations.cpp include/container_operations.h \
+		include/headers.h \
+		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/container_operations.o src/container_operations.cpp
 
-build/obj/main.o: src/main.cpp include/nav.h \
+build/obj/main.o: src/main.cpp include/main.h \
+		include/headers.h \
+		include/ui_builder.h \
+		include/nav.h \
 		build/ui/ui_nav.h \
 		include/container_element.h \
 		build/ui/ui_container_element.h \
 		include/vm_element.h \
 		build/ui/ui_vm_element.h \
-		include/utils.h
+		include/utils.h \
+		include/container_operations.h \
+		include/vm_operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
 build/obj/nav.o: src/nav.cpp include/nav.h \
-		build/ui/ui_nav.h
+		build/ui/ui_nav.h \
+		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/nav.o src/nav.cpp
 
-build/obj/utils.o: src/utils.cpp 
+build/obj/ui_builder.o: src/ui_builder.cpp include/ui_builder.h \
+		include/headers.h \
+		include/nav.h \
+		build/ui/ui_nav.h \
+		include/container_element.h \
+		build/ui/ui_container_element.h \
+		include/vm_element.h \
+		build/ui/ui_vm_element.h \
+		include/utils.h \
+		include/container_operations.h \
+		include/vm_operations.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/ui_builder.o src/ui_builder.cpp
+
+build/obj/utils.o: src/utils.cpp include/utils.h \
+		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/utils.o src/utils.cpp
 
 build/obj/vm_element.o: src/vm_element.cpp include/vm_element.h \
-		build/ui/ui_vm_element.h
+		build/ui/ui_vm_element.h \
+		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/vm_element.o src/vm_element.cpp
 
 build/obj/vm_operations.o: src/vm_operations.cpp 
