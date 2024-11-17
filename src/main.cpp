@@ -11,9 +11,12 @@ int main(int argc, char *argv[]) {
     QStackedWidget *stackedWidget = new QStackedWidget();
 
     Nav *nav = new Nav();
+    loadWidgetStyleSheet(nav, ":/styles/styles/nav.qss");
+
+    nav->setFixedSize(800, 100);   
 
     QWidget *containerWidget = new QWidget();
-    QVBoxLayout *containerLayout = new QVBoxLayout(containerWidget);
+    QVBoxLayout *containerLayout = new QVBoxLayout(containerWidget); 
 
     std::vector<std::string> container_names = list_containers();
 
@@ -46,9 +49,9 @@ int main(int argc, char *argv[]) {
 
     QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
         if (buttonName == "containers") {
-            stackedWidget->setCurrentWidget(containerWidget);  // Show the container widget
+            stackedWidget->setCurrentWidget(containerWidget);  
         } else if (buttonName == "virtual_machines") {
-            stackedWidget->setCurrentWidget(vm_element);  // Show the VM element widget
+            stackedWidget->setCurrentWidget(vm_element);  
         }
     });
 
