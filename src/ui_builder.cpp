@@ -15,7 +15,7 @@ QScrollArea* createContainerWidget(const std::vector<std::string>& containerName
         ContainerElement* element = new ContainerElement();
         element->setContainerName(QString::fromStdString(name));
         loadWidgetStyleSheet(element, ":/styles/styles/container_element.qss");
-        element->setFixedSize(800, 100);
+        element->setFixedSize(750, 100);
         layout->addWidget(element);
     }
 
@@ -25,8 +25,8 @@ QScrollArea* createContainerWidget(const std::vector<std::string>& containerName
     QScrollArea* scrollArea = new QScrollArea();
     scrollArea->setWidget(containerWidget);
     scrollArea->setWidgetResizable(true); 
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded); 
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); 
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
     return scrollArea;
 }
@@ -39,7 +39,7 @@ QScrollArea* createVMWidget(const std::vector<std::string>& VMNames) {
         VMElement* element = new VMElement();
         element->setVMName(QString::fromStdString(name));
         loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
-        element->setFixedSize(800, 100);
+        element->setFixedSize(750, 100);
         layout->addWidget(element);
     }
 
@@ -49,8 +49,8 @@ QScrollArea* createVMWidget(const std::vector<std::string>& VMNames) {
     QScrollArea* scrollArea = new QScrollArea();
     scrollArea->setWidget(VMWidget);
     scrollArea->setWidgetResizable(true); 
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded); 
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); 
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
     return scrollArea;
 }

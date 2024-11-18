@@ -46,3 +46,4 @@ QMenu::separator {
 QMenu::icon {
     padding-left: 10px; 
 }
+

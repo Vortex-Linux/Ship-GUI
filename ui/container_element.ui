@@ -15,7 +15,7 @@
                 <widget class="QFrame" name="container_frame">
                     <layout class="QHBoxLayout" name="horizontalLayout">
                         <property name="rightMargin">
-                            <number>30</number>
+                            <number>50</number>
                         </property>
                         <property name="leftMargin">
                             <number>30</number>
