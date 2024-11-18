@@ -16,7 +16,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -g -Wall -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I. -Iinclude -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -Ibuild/moc -Ibuild/ui -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /sbin/qmake
 DEL_FILE      = rm -f
@@ -39,7 +39,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = Ship-GUI1.0.0
 DISTDIR = /home/arun/VortexLinux/Ship-GUI/build/obj/Ship-GUI1.0.0
 LINK          = g++
-LFLAGS        = -Wl,-O1 -pipe -O2 -flto=4 -fno-fat-lto-objects -fuse-linker-plugin -fPIC
+LFLAGS        = -Wl,-O1 -pipe -g -Wall -O2 -flto=4 -fno-fat-lto-objects -fuse-linker-plugin -fPIC
 LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Core.so -lGL -lpthread   
 AR            = gcc-ar cqs
 RANLIB        = 
@@ -830,7 +830,7 @@ compiler_moc_predefs_make_all: build/moc/moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) build/moc/moc_predefs.h
 build/moc/moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
-	g++ -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -dM -E -o build/moc/moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
+	g++ -pipe -g -Wall -O2 -flto -fno-fat-lto-objects -Wall -Wextra -dM -E -o build/moc/moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: build/moc/moc_container_element.cpp build/moc/moc_nav.cpp build/moc/moc_vm_element.cpp
 compiler_moc_header_clean:
@@ -896,16 +896,16 @@ build/obj/container_operations.o: src/container_operations.cpp include/container
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/container_operations.o src/container_operations.cpp
 
 build/obj/main.o: src/main.cpp include/main.h \
-		include/headers.h \
 		include/ui_builder.h \
 		include/nav.h \
 		build/ui/ui_nav.h \
+		include/headers.h \
 		include/container_element.h \
 		build/ui/ui_container_element.h \
 		include/vm_element.h \
 		build/ui/ui_vm_element.h \
-		include/utils.h \
 		include/container_operations.h \
+		include/utils.h \
 		include/vm_operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
@@ -915,15 +915,15 @@ build/obj/nav.o: src/nav.cpp include/nav.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/nav.o src/nav.cpp
 
 build/obj/ui_builder.o: src/ui_builder.cpp include/ui_builder.h \
-		include/headers.h \
 		include/nav.h \
 		build/ui/ui_nav.h \
+		include/headers.h \
 		include/container_element.h \
 		build/ui/ui_container_element.h \
 		include/vm_element.h \
 		build/ui/ui_vm_element.h \
-		include/utils.h \
 		include/container_operations.h \
+		include/utils.h \
 		include/vm_operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/ui_builder.o src/ui_builder.cpp
 
@@ -936,7 +936,9 @@ build/obj/vm_element.o: src/vm_element.cpp include/vm_element.h \
 		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/vm_element.o src/vm_element.cpp
 
-build/obj/vm_operations.o: src/vm_operations.cpp 
+build/obj/vm_operations.o: src/vm_operations.cpp include/vm_operations.h \
+		include/headers.h \
+		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/vm_operations.o src/vm_operations.cpp
 
 build/obj/qrc_styles.o: qrc_styles.cpp 
