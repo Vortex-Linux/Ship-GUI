@@ -12,10 +12,10 @@ int main(int argc, char *argv[]) {
     layout->addWidget(nav); 
 
     std::vector<std::string> containernames = list_containers(); 
-    QWidget* containerWidget = createContainerWidget(containernames);
+    QScrollArea* containerWidget = createContainerWidget(containernames);
 
     std::vector<std::string> VMnames = list_vms(); 
-    QWidget* VMWidget = createVMWidget(VMnames);
+    QScrollArea* VMWidget = createVMWidget(VMnames);
 
     QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);

@@ -7,7 +7,7 @@ Nav* createNav(QWidget* parent) {
     return nav;
 }
 
-QWidget* createContainerWidget(const std::vector<std::string>& containerNames) {
+QScrollArea* createContainerWidget(const std::vector<std::string>& containerNames) {
     QWidget* containerWidget = new QWidget();
     QVBoxLayout* layout = new QVBoxLayout(containerWidget);
 
@@ -19,10 +19,19 @@ QWidget* createContainerWidget(const std::vector<std::string>& containerNames) {
         layout->addWidget(element);
     }
 
-    return containerWidget;
+    layout->setSizeConstraint(QLayout::SetMinimumSize);
+    containerWidget->setLayout(layout);
+
+    QScrollArea* scrollArea = new QScrollArea();
+    scrollArea->setWidget(containerWidget);
+    scrollArea->setWidgetResizable(true); 
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded); 
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    return scrollArea;
 }
 
-QWidget* createVMWidget(const std::vector<std::string>& VMNames) {
+QScrollArea* createVMWidget(const std::vector<std::string>& VMNames) {
     QWidget* VMWidget = new QWidget();
     QVBoxLayout* layout = new QVBoxLayout(VMWidget);
 
@@ -34,5 +43,15 @@ QWidget* createVMWidget(const std::vector<std::string>& VMNames) {
         layout->addWidget(element);
     }
 
-    return VMWidget;
+    layout->setSizeConstraint(QLayout::SetMinimumSize);
+    VMWidget->setLayout(layout);
+
+    QScrollArea* scrollArea = new QScrollArea();
+    scrollArea->setWidget(VMWidget);
+    scrollArea->setWidgetResizable(true); 
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded); 
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    return scrollArea;
 }
+

@@ -8,8 +8,8 @@
 #include "vm_operations.h"
 
 Nav* createNav(QWidget* parent = nullptr);
-QWidget* createContainerWidget(const std::vector<std::string>& containerNames);
-QWidget* createVMWidget(const std::vector<std::string>& VMNames);
+QScrollArea* createContainerWidget(const std::vector<std::string>& containerNames);
+QScrollArea* createVMWidget(const std::vector<std::string>& VMNames);
 
 #endif 
 
