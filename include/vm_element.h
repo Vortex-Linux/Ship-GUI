@@ -12,8 +12,15 @@ public:
     void setVMName(const QString &name);
     ~VMElement();
 
+private slots:
+    void startVM(); 
+    void stopVM(); 
+
 private:
     Ui::VMElement *ui;
+    QLabel *VMNameLabel;
+    void createMenu(); 
+    QMenu *menu;
 };
 
 #endif 
