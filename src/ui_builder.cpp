@@ -19,7 +19,8 @@ QScrollArea* createContainerWidget(const std::vector<std::string>& containerName
         layout->addWidget(element);
     }
 
-    layout->setSizeConstraint(QLayout::SetMinimumSize);
+    layout->insertStretch(-1, 1);
+
     containerWidget->setLayout(layout);
 
     QScrollArea* scrollArea = new QScrollArea();
@@ -43,7 +44,8 @@ QScrollArea* createVMWidget(const std::vector<std::string>& VMNames) {
         layout->addWidget(element);
     }
 
-    layout->setSizeConstraint(QLayout::SetMinimumSize);
+    layout->insertStretch(-1, 1);
+
     VMWidget->setLayout(layout);
 
     QScrollArea* scrollArea = new QScrollArea();
