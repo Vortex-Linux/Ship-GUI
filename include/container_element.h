@@ -13,8 +13,8 @@ public:
     ~ContainerElement();
 
 private slots:
-    void startVM(); 
-    void stopVM(); 
+    void startContainer(); 
+    void stopContainer(); 
 
 private:
     Ui::ContainerElement *ui;

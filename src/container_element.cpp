@@ -12,22 +12,22 @@ ContainerElement::ContainerElement(QWidget *parent)
 }
 
 void ContainerElement::createMenu() {
-    QAction *startAction = new QAction("Start VM", this);
-    QAction *stopAction = new QAction("Stop VM", this);
+    QAction *startAction = new QAction("Start Container", this);
+    QAction *stopAction = new QAction("Stop Container", this);
 
-    connect(startAction, &QAction::triggered, this, &ContainerElement::startVM);
-    connect(stopAction, &QAction::triggered, this, &ContainerElement::stopVM);
+    connect(startAction, &QAction::triggered, this, &ContainerElement::startContainer);
+    connect(stopAction, &QAction::triggered, this, &ContainerElement::stopContainer);
 
     menu->addAction(startAction);
     menu->addAction(stopAction);
 }
 
-void ContainerElement::startVM() {
-    qDebug() << "vm has been started";
+void ContainerElement::startContainer() {
+    qDebug() << "Container has been started";
 }
 
-void ContainerElement::stopVM() {
-    qDebug() << "vm has been stopped";
+void ContainerElement::stopContainer() {
+    qDebug() << "Container has been stopped";
 }
 
 void ContainerElement::setContainerName(const QString &name) {
