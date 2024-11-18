@@ -1,7 +1,7 @@
 #include "vm_element.h"
 
 VMElement::VMElement(QWidget *parent)
-    : QWidget(parent), ui(new Ui::VMElement) {
+    : QWidget(parent), ui(new Ui::VMElement), menu(new QMenu(this)) {
     ui->setupUi(this);
     VMNameLabel = this->findChild<QLabel*>("VMNameLabel");
     createMenu(); 
