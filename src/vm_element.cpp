@@ -31,7 +31,8 @@ void VMElement::createMenu() {
 }
 
 void VMElement::startVM() {
-    qDebug() << "vm has been started";
+    QString vmName = VMNameLabel->text();
+    start_vm(vmName);
 }
 
 void VMElement::restartVM() {
