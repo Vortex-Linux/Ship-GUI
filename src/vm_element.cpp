@@ -19,7 +19,16 @@ void VMElement::addActionToMenu(const QString &actionText, const QObject *receiv
 
 void VMElement::createMenu() {
     addActionToMenu("Start VM", this, SLOT(startVM()));
-    addActionToMenu("Stop VM", this, SLOT(stopVM()));
+    addActionToMenu("Restart VM", this, SLOT(restartVM()));
+    addActionToMenu("Delete VM", this, SLOT(deleteVM()));
+    addActionToMenu("View VM", this, SLOT(viewVM()));
+    addActionToMenu("Pause VM", this, SLOT(pauseVM()));
+    addActionToMenu("Resume VM", this, SLOT(resumeVM()));
+    addActionToMenu("Save VM", this, SLOT(saveVM()));
+    addActionToMenu("Shutdown VM", this, SLOT(shutdownVM()));
+    addActionToMenu("Send VM", this, SLOT(sendVM()));
+
+
 }
 
 void VMElement::startVM() {
