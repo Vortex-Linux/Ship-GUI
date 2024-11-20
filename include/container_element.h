@@ -22,6 +22,10 @@ private slots:
 private:
     Ui::ContainerElement *ui;
     QLabel *containerNameLabel;
+
+    template <typename Func>
+    void addActionToMenu(const QString &actionText, Func slot);
+
     void createMenu(); 
     QMenu *menu;
 };

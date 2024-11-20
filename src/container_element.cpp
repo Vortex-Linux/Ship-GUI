@@ -11,24 +11,19 @@ ContainerElement::ContainerElement(QWidget *parent)
     });
 }
 
+template <typename Func>
+void ContainerElement::addActionToMenu(const QString &actionText, Func slot) {
+    QAction *action = new QAction(actionText, this);
+    connect(action, &QAction::triggered, this, slot);
+    menu->addAction(action);
+}
+
 void ContainerElement::createMenu() {
-    QAction *deleteAction = new QAction("Delete Container", this);
-    QAction *viewAction = new QAction("View Container", this);
-    QAction *upgradeAction = new QAction("Upgrade Container", this);
-    QAction *stopAction = new QAction("Stop Container", this);
-    QAction *sendAction = new QAction("Send Container", this);
-
-    connect(deleteAction, &QAction::triggered, this, &ContainerElement::deleteContainer);
-    connect(viewAction, &QAction::triggered, this, &ContainerElement::viewContainer);
-    connect(upgradeAction, &QAction::triggered, this, &ContainerElement::upgradeContainer);
-    connect(stopAction, &QAction::triggered, this, &ContainerElement::stopContainer);
-    connect(sendAction, &QAction::triggered, this, &ContainerElement::sendContainer);
-
-    menu->addAction(deleteAction);
-    menu->addAction(viewAction);
-    menu->addAction(upgradeAction);
-    menu->addAction(stopAction);
-    menu->addAction(sendAction);
+    addActionToMenu("Delete Container", &ContainerElement::deleteContainer);
+    addActionToMenu("View VM", &ContainerElement::viewContainer);
+    addActionToMenu("Upgrade VM", &ContainerElement::upgradeContainer);
+    addActionToMenu("Stop VM", &ContainerElement::stopContainer);
+    addActionToMenu("Send VM", &ContainerElement::sendContainer);
 }
 
 void ContainerElement::deleteContainer() {
