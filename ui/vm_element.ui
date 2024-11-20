@@ -26,9 +26,6 @@
                         </item>
                         <item>
                             <widget class="QLabel" name="VMStateLabel">
-                                <property name="text">
-                                    <string>Shutoff</string>
-                                </property>
                             </widget>
                         </item>
                         <item>

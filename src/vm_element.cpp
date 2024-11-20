@@ -4,6 +4,7 @@ VMElement::VMElement(QWidget *parent)
     : QWidget(parent), ui(new Ui::VMElement), menu(new QMenu(this)) {
     ui->setupUi(this);
     VMNameLabel = this->findChild<QLabel*>("VMNameLabel");
+    VMStatusLabel = this->findChild<QLabel*>("VMStatusLabel");
     createMenu(); 
 
     connect(ui->optionsButton, &QToolButton::clicked, this, [this]() {
@@ -70,6 +71,10 @@ void VMElement::sendVM() {
 void VMElement::setVMName(const QString &name) {
     VMNameLabel->setText(name);  
 }
+
+void VMElement::setVMStatus(const QString &status) {
+    VMStatusLabel->setText(status);  
+} 
 
 VMElement::~VMElement() {
     delete ui;

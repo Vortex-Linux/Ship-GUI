@@ -32,13 +32,17 @@ QScrollArea* createContainerWidget(const std::vector<std::string>& containerName
     return scrollArea;
 }
 
-QScrollArea* createVMWidget(const std::vector<std::string>& VMNames) {
+QScrollArea* createVMWidget() {
+    std::vector<std::string> VMnames = list_vm_names(); 
+    std::vector<std::string> VMstatus = list_vm_status(); 
+
     QWidget* VMWidget = new QWidget();
     QVBoxLayout* layout = new QVBoxLayout(VMWidget);
 
-    for (const auto& name : VMNames) {
+    for (size_t i = 0; i < VMnames.size(); ++i) {
         VMElement* element = new VMElement();
-        element->setVMName(QString::fromStdString(name));
+        element->setVMName(QString::fromStdString(VMnames[i]));
+        element->setVMStatus(QString::fromStdString(VMstatus[i])); 
         loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
         element->setFixedSize(750, 100);
         layout->addWidget(element);

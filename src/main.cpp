@@ -14,8 +14,7 @@ int main(int argc, char *argv[]) {
     std::vector<std::string> containernames = list_containers(); 
     QScrollArea* containerWidget = createContainerWidget(containernames);
 
-    std::vector<std::string> VMnames = list_vms(); 
-    QScrollArea* VMWidget = createVMWidget(VMnames);
+    QScrollArea* VMWidget = createVMWidget();
 
     QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);

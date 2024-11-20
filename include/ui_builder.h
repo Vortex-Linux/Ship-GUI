@@ -9,7 +9,7 @@
 
 Nav* createNav(QWidget* parent = nullptr);
 QScrollArea* createContainerWidget(const std::vector<std::string>& containerNames);
-QScrollArea* createVMWidget(const std::vector<std::string>& VMNames);
+QScrollArea* createVMWidget();
 
 #endif 
 

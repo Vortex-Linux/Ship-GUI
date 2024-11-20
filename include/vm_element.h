@@ -11,6 +11,7 @@ class VMElement : public QWidget {
 public:
     explicit VMElement(QWidget *parent = nullptr);
     void setVMName(const QString &name);
+    void setVMStatus(const QString &status);
     ~VMElement();
 
 private slots:
@@ -27,6 +28,7 @@ private slots:
 private:
     Ui::VMElement *ui;
     QLabel *VMNameLabel;
+    QLabel *VMStatusLabel;
 
     template <typename Func>
     void addActionToMenu(const QString &actionText, Func slot);
