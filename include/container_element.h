@@ -3,6 +3,7 @@
 
 #include "ui_container_element.h"
 #include "headers.h"
+#include "container_operations.h"
 
 class ContainerElement : public QWidget {
     Q_OBJECT

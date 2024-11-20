@@ -3,6 +3,7 @@
 
 #include "ui_vm_element.h"
 #include "headers.h"
+#include "vm_operations.h"
 
 class VMElement : public QWidget {
     Q_OBJECT
