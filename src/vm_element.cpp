@@ -33,7 +33,8 @@ void VMElement::createMenu() {
 
 void VMElement::startVM() {
     QString vmName = VMNameLabel->text();
-    start_vm(vmName);
+    std::string vmNameStd = vmName.toStdString();  
+    start_vm(vmNameStd);
 }
 
 void VMElement::restartVM() {
