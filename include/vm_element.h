@@ -26,6 +26,10 @@ private slots:
 private:
     Ui::VMElement *ui;
     QLabel *VMNameLabel;
+
+    template <typename Func>
+    void addActionToMenu(const QString &actionText, Func slot);
+
     void createMenu(); 
     QMenu *menu;
 };

@@ -11,24 +11,23 @@ VMElement::VMElement(QWidget *parent)
     });
 }
 
-void VMElement::addActionToMenu(const QString &actionText, const QObject *receiver, const char *slot) {
+template <typename Func>
+void VMElement::addActionToMenu(const QString &actionText, Func slot) {
     QAction *action = new QAction(actionText, this);
-    connect(action, &QAction::triggered, receiver, slot);
+    connect(action, &QAction::triggered, this, slot);
     menu->addAction(action);
 }
 
 void VMElement::createMenu() {
-    addActionToMenu("Start VM", this, SLOT(startVM()));
-    addActionToMenu("Restart VM", this, SLOT(restartVM()));
-    addActionToMenu("Delete VM", this, SLOT(deleteVM()));
-    addActionToMenu("View VM", this, SLOT(viewVM()));
-    addActionToMenu("Pause VM", this, SLOT(pauseVM()));
-    addActionToMenu("Resume VM", this, SLOT(resumeVM()));
-    addActionToMenu("Save VM", this, SLOT(saveVM()));
-    addActionToMenu("Shutdown VM", this, SLOT(shutdownVM()));
-    addActionToMenu("Send VM", this, SLOT(sendVM()));
-
-
+    addActionToMenu("Start VM", &VMElement::startVM);
+    addActionToMenu("Restart VM", &VMElement::restartVM);
+    addActionToMenu("Delete VM", &VMElement::deleteVM);
+    addActionToMenu("View VM", &VMElement::viewVM);
+    addActionToMenu("Pause VM", &VMElement::pauseVM);
+    addActionToMenu("Resume VM", &VMElement::resumeVM);
+    addActionToMenu("Save VM", &VMElement::saveVM);
+    addActionToMenu("Shutdown VM", &VMElement::shutdownVM);
+    addActionToMenu("Send VM", &VMElement::sendVM);
 }
 
 void VMElement::startVM() {
