@@ -13,8 +13,11 @@ public:
     ~ContainerElement();
 
 private slots:
-    void startContainer(); 
-    void stopContainer(); 
+    void deleteContainer();
+    void viewContainer();
+    void upgradeContainer();
+    void stopContainer();
+    void sendContainer();
 
 private:
     Ui::ContainerElement *ui;
