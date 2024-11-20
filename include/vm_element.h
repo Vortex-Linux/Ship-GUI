@@ -14,7 +14,14 @@ public:
 
 private slots:
     void startVM(); 
-    void stopVM(); 
+    void restartVM(); 
+    void deleteVM(); 
+    void viewVM(); 
+    void pauseVM(); 
+    void resumeVM(); 
+    void saveVM(); 
+    void shutdownVM(); 
+    void sendVM(); 
 
 private:
     Ui::VMElement *ui;
