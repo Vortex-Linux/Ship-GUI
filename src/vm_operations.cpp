@@ -25,4 +25,12 @@ void delete_vm(std::string vm_name) {
     exec(delete_vm_cmd);
 }
 
+void view_vm(std::string vm_name) {
+    std::string view_vm_cmd = "echo y | ship --vm view " + vm_name;
+    exec(view_vm_cmd);
+}
+
+
+
+
 
