@@ -7,17 +7,28 @@ Nav* createNav(QWidget* parent) {
     return nav;
 }
 
-QScrollArea* createContainerWidget(const std::vector<std::string>& containerNames) {
+QScrollArea* createContainerWidget() {
+    std::vector<std::string> containerNames = list_container_names(); 
+    std::vector<std::string> containerStatus = list_container_status(); 
+
     QWidget* containerWidget = new QWidget();
     QVBoxLayout* layout = new QVBoxLayout(containerWidget);
 
     for (const auto& name : containerNames) {
-        ContainerElement* element = new ContainerElement();
-        element->setContainerName(QString::fromStdString(name));
         loadWidgetStyleSheet(element, ":/styles/styles/container_element.qss");
         element->setFixedSize(750, 100);
         layout->addWidget(element);
     }
+
+    for (size_t i = 0; i < containernNames.size(); ++i) {
+        ContainerElement* element = new ContainerElement();
+        element->setContainerName(QString::fromStdString(containerNames[i]));
+        element->setContainerStatus(QString::fromStdString(containerStatus[i]));
+        loadwidgetstylesheet(element, ":/styles/styles/vm_element.qss");
+        element->setfixedsize(750, 100);
+        layout->addwidget(element);
+    }
+
 
     layout->insertStretch(-1, 1);
 
@@ -40,12 +51,12 @@ QScrollArea* createVMWidget() {
     QVBoxLayout* layout = new QVBoxLayout(VMWidget);
 
     for (size_t i = 0; i < VMnames.size(); ++i) {
-        VMElement* element = new VMElement();
-        element->setVMName(QString::fromStdString(VMnames[i]));
-        element->setVMStatus(QString::fromStdString(VMstatus[i])); 
-        loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
-        element->setFixedSize(750, 100);
-        layout->addWidget(element);
+        vmelement* element = new vmelement();
+        element->setvmname(qstring::fromstdstring(vmnames[i]));
+        element->setvmstatus(qstring::fromstdstring(vmstatus[i])); 
+        loadwidgetstylesheet(element, ":/styles/styles/vm_element.qss");
+        element->setfixedsize(750, 100);
+        layout->addwidget(element);
     }
 
     layout->insertStretch(-1, 1);
