@@ -25,6 +25,12 @@ void upgrade_container(std::string container_name) {
     exec(upgrade_container_cmd);
 }
 
+void stop_container(std::string container_name) {
+    std::string stop_container_cmd = "ship --ctr stop " + container_name;
+    exec(stop_container_cmd);
+}
+
+
 
 
 
