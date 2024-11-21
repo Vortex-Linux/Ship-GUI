@@ -26,6 +26,8 @@ private:
     QLabel *containerNameLabel;
     QLabel *containerStatusLabel;
 
+    std::string getContainerName() const;
+
     template <typename Func>
     void addActionToMenu(const QString &actionText, Func slot);
 

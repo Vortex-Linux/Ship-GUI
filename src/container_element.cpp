@@ -27,28 +27,28 @@ void ContainerElement::createMenu() {
     addActionToMenu("Send VM", &ContainerElement::sendContainer);
 }
 
-std::string VMElement::getVMName() const {
-    return VMNameLabel->text().toStdString();
+std::string ContainerElement::getContainerName() const {
+    return containerNameLabel->text().toStdString();
 }
 
 void ContainerElement::deleteContainer() {
-    qDebug() << "Container has been deleted";
+    delete_container(getContainerName());
 }
 
 void ContainerElement::viewContainer() {
-    qDebug() << "Container is being viewed";
+    view_container(getContainerName());
 }
 
 void ContainerElement::upgradeContainer() {
-    qDebug() << "Container has been upgraded";
+    upgrade_container(getContainerName());
 }
 
 void ContainerElement::stopContainer() {
-    qDebug() << "Container has been stopped";
+    stop_container(getContainerName());
 }
 
 void ContainerElement::sendContainer() {
-    qDebug() << "Container has been sent";
+    send_container(getContainerName());
 }
 
 void ContainerElement::setContainerName(const QString &name) {
