@@ -20,3 +20,9 @@ void restart_vm(std::string vm_name) {
     exec(restart_vm_cmd);
 }
 
+void delete_vm(std::string vm_name) {
+    std::string delete_vm_cmd = "echo y | ship --vm delete " + vm_name;
+    exec(delete_vm_cmd);
+}
+
+
