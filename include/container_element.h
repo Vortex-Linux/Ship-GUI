@@ -11,6 +11,7 @@ class ContainerElement : public QWidget {
 public:
     explicit ContainerElement(QWidget *parent = nullptr);
     void setContainerName(const QString &name);
+    void setContainerStatus(const QString &status);
     ~ContainerElement();
 
 private slots:
@@ -23,6 +24,7 @@ private slots:
 private:
     Ui::ContainerElement *ui;
     QLabel *containerNameLabel;
+    QLabel *containerStatusLabel;
 
     template <typename Func>
     void addActionToMenu(const QString &actionText, Func slot);
