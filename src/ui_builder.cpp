@@ -14,19 +14,13 @@ QScrollArea* createContainerWidget() {
     QWidget* containerWidget = new QWidget();
     QVBoxLayout* layout = new QVBoxLayout(containerWidget);
 
-    for (const auto& name : containerNames) {
-        loadWidgetStyleSheet(element, ":/styles/styles/container_element.qss");
-        element->setFixedSize(750, 100);
-        layout->addWidget(element);
-    }
-
-    for (size_t i = 0; i < containernNames.size(); ++i) {
+    for (size_t i = 0; i < containerNames.size(); ++i) {
         ContainerElement* element = new ContainerElement();
         element->setContainerName(QString::fromStdString(containerNames[i]));
         element->setContainerStatus(QString::fromStdString(containerStatus[i]));
-        loadwidgetstylesheet(element, ":/styles/styles/vm_element.qss");
-        element->setfixedsize(750, 100);
-        layout->addwidget(element);
+        loadWidgetStyleSheet(element, ":/styles/styles/container_element.qss");
+        element->setFixedSize(750, 100);
+        layout->addWidget(element);
     }
 
 

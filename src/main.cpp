@@ -11,9 +11,7 @@ int main(int argc, char *argv[]) {
     Nav* nav = createNav();
     layout->addWidget(nav); 
 
-    std::vector<std::string> containernames = list_containers(); 
-    QScrollArea* containerWidget = createContainerWidget(containernames);
-
+    QScrollArea* containerWidget = createContainerWidget();
     QScrollArea* VMWidget = createVMWidget();
 
     QStackedWidget* stackedWidget = new QStackedWidget();

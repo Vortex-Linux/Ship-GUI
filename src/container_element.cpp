@@ -4,7 +4,7 @@ ContainerElement::ContainerElement(QWidget *parent)
     : QWidget(parent), ui(new Ui::ContainerElement), menu(new QMenu(this)) {
     ui->setupUi(this);
     containerNameLabel = this->findChild<QLabel*>("containerNameLabel");
-    ContainerStatusLabel = this->findChild<QLabel*>("containerStatusLabel");
+    containerStatusLabel = this->findChild<QLabel*>("containerStatusLabel");
     createMenu(); 
 
     connect(ui->optionsButton, &QToolButton::clicked, this, [this]() {
@@ -51,8 +51,8 @@ void ContainerElement::setContainerName(const QString &name) {
     containerNameLabel->setText(name);  
 }
 
-void VMElement::setContainerStatus(const QString &status) {
-    VMStatusLabel->setText(status);  
+void ContainerElement::setContainerStatus(const QString &status) {
+    containerStatusLabel->setText(status);  
 }
 
 ContainerElement::~ContainerElement() {
