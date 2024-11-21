@@ -25,10 +25,7 @@
                             </widget>
                         </item>
                         <item>
-                            <widget class="QLabel" name="containerStateLabel">
-                                <property name="text">
-                                    <string>Shutoff</string>
-                                </property>
+                            <widget class="QLabel" name="containerStatusLabel">
                             </widget>
                         </item>
                         <item>
