@@ -51,12 +51,12 @@ QScrollArea* createVMWidget() {
     QVBoxLayout* layout = new QVBoxLayout(VMWidget);
 
     for (size_t i = 0; i < VMnames.size(); ++i) {
-        vmelement* element = new vmelement();
-        element->setvmname(qstring::fromstdstring(vmnames[i]));
-        element->setvmstatus(qstring::fromstdstring(vmstatus[i])); 
-        loadwidgetstylesheet(element, ":/styles/styles/vm_element.qss");
-        element->setfixedsize(750, 100);
-        layout->addwidget(element);
+        VMElement* element = new VMElement();
+        element->setVMName(QString::fromStdString(VMnames[i]));
+        element->setVMStatus(QString::fromStdString(VMstatus[i])); 
+        loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
+        element->setFixedSize(750, 100);
+        layout->addWidget(element);
     }
 
     layout->insertStretch(-1, 1);
@@ -71,4 +71,3 @@ QScrollArea* createVMWidget() {
 
     return scrollArea;
 }
-
