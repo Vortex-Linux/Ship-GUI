@@ -6,7 +6,7 @@ std::vector<std::string> list_vm_names() {
 }
 
 std::vector<std::string> list_vm_status() {
-    std::string list_vm_status_cmd = "ship --vm list | awk 'NR > 2 {print $3, $4}'";
+    std::string list_vm_status_cmd = "ship --vm list | awk 'NR > 2 {print $3 \"\" $4}'";
     return list_items(exec(list_vm_status_cmd));
 }
 
