@@ -40,6 +40,11 @@ void resume_vm(std::string vm_name) {
     exec(resume_vm_cmd);
 }
 
+void save_vm(std::string vm_name) {
+    std::string save_vm_cmd = "ship --vm save " + vm_name;
+    exec(save_vm_cmd);
+}
+
 
 
 
