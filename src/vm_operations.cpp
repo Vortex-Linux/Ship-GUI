@@ -50,6 +50,12 @@ void shutdown_vm(std::string vm_name) {
     exec(shutdown_vm_cmd);
 }
 
+void send_vm(std::string vm_name) {
+    std::string send_vm_cmd = "ship --vm send " + vm_name;
+    exec(send_vm_cmd);
+}
+
+
 
 
 
