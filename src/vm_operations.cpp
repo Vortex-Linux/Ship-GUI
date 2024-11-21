@@ -35,6 +35,12 @@ void pause_vm(std::string vm_name) {
     exec(pause_vm_cmd);
 }
 
+void resume_vm(std::string vm_name) {
+    std::string resume_vm_cmd = "ship --vm resume " + vm_name;
+    exec(resume_vm_cmd);
+}
+
+
 
 
 
