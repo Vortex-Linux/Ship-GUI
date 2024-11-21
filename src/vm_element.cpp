@@ -38,35 +38,51 @@ void VMElement::startVM() {
 }
 
 void VMElement::restartVM() {
-    qDebug() << "vm has been restarted";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    restart_vm(vmNameStd);
 }
 
 void VMElement::deleteVM() {
-    qDebug() << "vm has been deleted";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    delete_vm(vmNameStd);
 }
 
 void VMElement::viewVM() {
-    qDebug() << "vm has been viewed";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    view_vm(vmNameStd);
 }
 
 void VMElement::pauseVM() {
-    qDebug() << "vm has been paused";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    pause_vm(vmNameStd);
 }
 
 void VMElement::resumeVM() {
-    qDebug() << "vm has been resumed";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    resume_vm(vmNameStd);
 }
 
 void VMElement::saveVM() {
-    qDebug() << "vm has been saved";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    save_vm(vmNameStd);
 }
 
 void VMElement::shutdownVM() {
-    qDebug() << "vm has been shutdown";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    shutdown_vm(vmNameStd);
 }
 
 void VMElement::sendVM() {
-    qDebug() << "vm has been sent";
+    QString vmName = VMNameLabel->text();
+    std::string vmNameStd = vmName.toStdString();  
+    send_vm(vmNameStd);
 }
 
 void VMElement::setVMName(const QString &name) {
