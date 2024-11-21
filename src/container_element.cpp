@@ -27,6 +27,10 @@ void ContainerElement::createMenu() {
     addActionToMenu("Send VM", &ContainerElement::sendContainer);
 }
 
+std::string VMElement::getVMName() const {
+    return VMNameLabel->text().toStdString();
+}
+
 void ContainerElement::deleteContainer() {
     qDebug() << "Container has been deleted";
 }
