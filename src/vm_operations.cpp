@@ -30,6 +30,12 @@ void view_vm(std::string vm_name) {
     exec(view_vm_cmd);
 }
 
+void pause_vm(std::string vm_name) {
+    std::string pause_vm_cmd = "ship --vm pause " + vm_name;
+    exec(pause_vm_cmd);
+}
+
+
 
 
 
