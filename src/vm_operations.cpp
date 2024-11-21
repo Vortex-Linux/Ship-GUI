@@ -15,3 +15,8 @@ void start_vm(std::string vm_name) {
     exec(start_vm_cmd);
 }
 
+void restart_vm(std::string vm_name) {
+    std::string restart_vm_cmd = "echo y | ship --vm restart " + vm_name;
+    exec(restart_vm_cmd);
+}
+
