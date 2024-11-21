@@ -6,11 +6,11 @@
 
 std::vector<std::string> list_container_names();
 std::vector<std::string> list_container_status();
-void deleteContainer(std::string container_name);
-void viewContainer(std::string container_name);
-void upgradeContainer(std::string container_name);
-void stopContainer(std::string container_name);
-void sendContainer(std::string container_name);
+void delete_container(std::string container_name);
+void view_container(std::string container_name);
+void upgrade_container(std::string container_name);
+void stop_container(std::string container_name);
+void send_container(std::string container_name);
 
 #endif 
 

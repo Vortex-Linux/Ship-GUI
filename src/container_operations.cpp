@@ -30,6 +30,12 @@ void stop_container(std::string container_name) {
     exec(stop_container_cmd);
 }
 
+void send_container(std::string container_name) {
+    std::string send_container_cmd = "ship --ctr send " + container_name;
+    exec(send_container_cmd);
+}
+
+
 
 
 
