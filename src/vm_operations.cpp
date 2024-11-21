@@ -45,6 +45,12 @@ void save_vm(std::string vm_name) {
     exec(save_vm_cmd);
 }
 
+void shutdown_vm(std::string vm_name) {
+    std::string shutdown_vm_cmd = "echo y | ship --vm shutdown " + vm_name;
+    exec(shutdown_vm_cmd);
+}
+
+
 
 
 
