@@ -30,6 +30,8 @@ private:
     QLabel *VMNameLabel;
     QLabel *VMStatusLabel;
 
+    std::string getVMName() const;
+
     template <typename Func>
     void addActionToMenu(const QString &actionText, Func slot);
 

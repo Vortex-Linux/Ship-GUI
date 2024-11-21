@@ -31,58 +31,44 @@ void VMElement::createMenu() {
     addActionToMenu("Send VM", &VMElement::sendVM);
 }
 
+std::string VMElement::getVMName() const {
+    return VMNameLabel->text().toStdString();
+}
+
 void VMElement::startVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    start_vm(vmNameStd);
+    start_vm(getVMName());
 }
 
 void VMElement::restartVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    restart_vm(vmNameStd);
+    start_vm(getVMName());
 }
 
 void VMElement::deleteVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    delete_vm(vmNameStd);
+    restart_vm(getVMName());
 }
 
 void VMElement::viewVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    view_vm(vmNameStd);
+    view_vm(getVMName());
 }
 
 void VMElement::pauseVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    pause_vm(vmNameStd);
+    pause_vm(getVMName());
 }
 
 void VMElement::resumeVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    resume_vm(vmNameStd);
+    resume_vm(getVMName());
 }
 
 void VMElement::saveVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    save_vm(vmNameStd);
+    save_vm(getVMName());
 }
 
 void VMElement::shutdownVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    shutdown_vm(vmNameStd);
+    shutdown_vm(getVMName());
 }
 
 void VMElement::sendVM() {
-    QString vmName = VMNameLabel->text();
-    std::string vmNameStd = vmName.toStdString();  
-    send_vm(vmNameStd);
+    send_vm(getVMName());
 }
 
 void VMElement::setVMName(const QString &name) {
