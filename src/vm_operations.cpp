@@ -1,13 +1,13 @@
 #include "vm_operations.h"
 
 std::vector<std::string> list_vm_names() {
-    std::string list_vm_cmd = "ship --vm list | awk 'NR > 2 {print $2}'";
-    return list_items(exec(list_vm_cmd));
+    std::string list_vm_name_cmd = "ship --vm list | awk 'NR > 2 {print $2}'";
+    return list_items(exec(list_vm_name_cmd));
 }
 
 std::vector<std::string> list_vm_status() {
-    std::string list_vm_cmd = "ship --vm list | awk 'NR > 2 {print $3, $4}'";
-    return list_items(exec(list_vm_cmd));
+    std::string list_vm_status_cmd = "ship --vm list | awk 'NR > 2 {print $3, $4}'";
+    return list_items(exec(list_vm_status_cmd));
 }
 
 void start_vm(std::string vm_name) {
