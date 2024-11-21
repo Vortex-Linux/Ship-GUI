@@ -20,6 +20,12 @@ void view_container(std::string container_name) {
     exec(view_container_cmd);
 }
 
+void upgrade_container(std::string container_name) {
+    std::string upgrade_container_cmd = "ship --ctr upgrade " + container_name;
+    exec(upgrade_container_cmd);
+}
+
+
 
 
 
