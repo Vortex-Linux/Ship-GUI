@@ -5,6 +5,7 @@ Nav::Nav(QWidget *parent) : QWidget(parent), ui(new Ui::Nav) {
 
     ui->container_button->setProperty("active", true);
     ui->vm_button->setProperty("active", false);
+
     ui->container_button->style()->polish(ui->container_button);
     ui->vm_button->style()->polish(ui->vm_button);
 

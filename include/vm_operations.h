@@ -1,5 +1,5 @@
-#ifndef VM_OPERATIONS_H
-#define VM_OPERATIONS_H
+#ifndef _vm_OPERATIONS_H
+#define _vm_OPERATIONS_H
 
 #include "headers.h"
 #include "utils.h"
@@ -7,14 +7,14 @@
 std::vector<std::string> list_vm_names();
 std::vector<std::string> list_vm_status();
 void start_vm(std::string vm_name);
-void restartVM(std::string vm_name);
-void deleteVM(std::string vm_name);
-void viewVM(std::string vm_name);
-void pauseVM(std::string vm_name);
-void resumeVM(std::string vm_name);
-void saveVM(std::string vm_name);
-void shutdownVM(std::string vm_name);
-void sendVM(std::string vm_name);
+void restart_vm(std::string vm_name);
+void delete_vm(std::string vm_name);
+void view_vm(std::string vm_name);
+void pause_vm(std::string vm_name);
+void resume_vm(std::string vm_name);
+void save_vm(std::string vm_name);
+void shutdown_vm(std::string vm_name);
+void send_vm(std::string vm_name);
 
 #endif 
 
