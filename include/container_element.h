@@ -23,7 +23,6 @@ private slots:
 
 signals:
     void containerUpdated(); 
-    void VMUpdated(); 
 
 private:
     Ui::ContainerElement *ui;

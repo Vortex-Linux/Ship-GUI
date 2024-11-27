@@ -23,7 +23,10 @@ private slots:
     void resumeVM(); 
     void saveVM(); 
     void shutdownVM(); 
-    void sendVM(); 
+    void sendVM();
+
+signals:
+    void VMUpdated(); 
 
 private:
     Ui::VMElement *ui;
