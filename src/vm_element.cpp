@@ -37,34 +37,42 @@ std::string VMElement::getVMName() const {
 
 void VMElement::startVM() {
     start_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::restartVM() {
     start_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::deleteVM() {
     restart_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::viewVM() {
     view_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::pauseVM() {
     pause_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::resumeVM() {
     resume_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::saveVM() {
     save_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::shutdownVM() {
     shutdown_vm(getVMName());
+    emit VMUpdated();
 }
 
 void VMElement::sendVM() {

@@ -33,6 +33,7 @@ std::string ContainerElement::getContainerName() const {
 
 void ContainerElement::deleteContainer() {
     delete_container(getContainerName());
+    emit containerUpdated();
 }
 
 void ContainerElement::viewContainer() {
@@ -41,10 +42,12 @@ void ContainerElement::viewContainer() {
 
 void ContainerElement::upgradeContainer() {
     upgrade_container(getContainerName());
+    emit containerUpdated();
 }
 
 void ContainerElement::stopContainer() {
     stop_container(getContainerName());
+    emit containerUpdated();
 }
 
 void ContainerElement::sendContainer() {
