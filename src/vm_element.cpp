@@ -36,43 +36,51 @@ std::string VMElement::getVMName() const {
 }
 
 void VMElement::startVM() {
-    start_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    start_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::restartVM() {
-    start_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    start_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::deleteVM() {
-    restart_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    restart_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::viewVM() {
-    view_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    view_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::pauseVM() {
-    pause_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    pause_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::resumeVM() {
-    resume_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    resume_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::saveVM() {
-    save_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    save_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::shutdownVM() {
-    shutdown_vm(getVMName());
-    emit VMUpdated();
+    QString VMName = getVMName();
+    shutdown_vm(VMName);
+    emit VMUpdated(VMName);
 }
 
 void VMElement::sendVM() {
