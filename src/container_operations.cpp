@@ -10,6 +10,12 @@ std::vector<std::string> list_container_status() {
     return list_items(exec(list_vm_status_cmd));
 }
 
+std::string list_updated_container_status(std::string container_name) {
+    std::string list_container_status_cmd = "ship --ctr list | grep " + container_name + " | awk '{print $5}'";
+    return (exec(list_container_status_cmd));
+}
+
+
 void delete_container(std::string container_name) {
     std::string delete_container_cmd = "ship --ctr delete " + container_name;
     exec(delete_container_cmd);

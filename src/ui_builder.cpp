@@ -21,6 +21,14 @@ QScrollArea* createContainerWidget() {
         loadWidgetStyleSheet(element, ":/styles/styles/container_element.qss");
         element->setFixedSize(750, 100);
         layout->addWidget(element);
+
+        QObject::connect(element, &ContainerElement::containerUpdated, 
+            [=](const QString &containerName) mutable {
+                if (containerName == element->getContainerName()) {
+                    element->setContainerStatus(list_updated_container_status(containerName));
+                }
+            }
+        );
     }
 
     layout->insertStretch(-1, 1);
@@ -50,6 +58,14 @@ QScrollArea* createVMWidget() {
         loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
         element->setFixedSize(750, 100);
         layout->addWidget(element);
+
+        QObject::connect(element, &VMElement::VMUpdated, 
+            [=](const QString &VMName) mutable {
+                if (VMName == element->getVMName()) {
+                    element->setVMStatus(list_updated_vm_status(VMName));
+                }
+            }
+        );
     }
 
     layout->insertStretch(-1, 1);
