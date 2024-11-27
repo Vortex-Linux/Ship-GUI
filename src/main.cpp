@@ -19,11 +19,21 @@ int main(int argc, char *argv[]) {
     stackedWidget->addWidget(VMWidget);
     layout->addWidget(stackedWidget); 
 
-    QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
+    QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) mutable {
+        QWidget* currentWidget = stackedWidget->currentWidget();
+        if (currentWidget) {
+            stackedWidget->removeWidget(currentWidget);
+            delete currentWidget;
+        }
+
         if (buttonName == "containers") {
-            stackedWidget->setCurrentWidget(containerWidget);
+            QScrollArea* containerWidget = createContainerWidget();
+            stackedWidget->addWidget(containerWidget); 
+            stackedWidget->setCurrentWidget(containerWidget); 
         } else if (buttonName == "virtual_machines") {
-            stackedWidget->setCurrentWidget(VMWidget);
+            QScrollArea* VMWidget = createVMWidget();
+            stackedWidget->addWidget(VMWidget); 
+            stackedWidget->setCurrentWidget(VMWidget); 
         }
     });
 

@@ -23,7 +23,6 @@ QScrollArea* createContainerWidget() {
         layout->addWidget(element);
     }
 
-
     layout->insertStretch(-1, 1);
 
     containerWidget->setLayout(layout);

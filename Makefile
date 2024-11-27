@@ -88,6 +88,14 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/qconfig.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Attica.pri \
 		/usr/lib/qt/mkspecs/modules/qt_BluezQt.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayClient.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayCommon.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayKItemModels.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayLauncher.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayLauncherUi.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayProbe.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayUi.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KActivities.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KActivitiesStats.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KArchive.pri \
@@ -226,6 +234,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_script_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_scripttools.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_scripttools_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_sensors.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_sensors_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_serialport.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_serialport_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_service_support_private.pri \
@@ -335,6 +345,14 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 		/usr/lib/qt/mkspecs/qconfig.pri \
 		/usr/lib/qt/mkspecs/modules/qt_Attica.pri \
 		/usr/lib/qt/mkspecs/modules/qt_BluezQt.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayClient.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayCommon.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayCore.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayKItemModels.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayLauncher.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayLauncherUi.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayProbe.pri \
+		/usr/lib/qt/mkspecs/modules/qt_GammaRayUi.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KActivities.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KActivitiesStats.pri \
 		/usr/lib/qt/mkspecs/modules/qt_KArchive.pri \
@@ -473,6 +491,8 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 		/usr/lib/qt/mkspecs/modules/qt_lib_script_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_scripttools.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_scripttools_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_sensors.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_sensors_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_serialport.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_serialport_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_service_support_private.pri \
@@ -558,6 +578,14 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 /usr/lib/qt/mkspecs/qconfig.pri:
 /usr/lib/qt/mkspecs/modules/qt_Attica.pri:
 /usr/lib/qt/mkspecs/modules/qt_BluezQt.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayClient.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayCommon.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayCore.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayKItemModels.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayLauncher.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayLauncherUi.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayProbe.pri:
+/usr/lib/qt/mkspecs/modules/qt_GammaRayUi.pri:
 /usr/lib/qt/mkspecs/modules/qt_KActivities.pri:
 /usr/lib/qt/mkspecs/modules/qt_KActivitiesStats.pri:
 /usr/lib/qt/mkspecs/modules/qt_KArchive.pri:
@@ -696,6 +724,8 @@ Makefile: Ship-GUI.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mksp
 /usr/lib/qt/mkspecs/modules/qt_lib_script_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_scripttools.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_scripttools_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_sensors.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_sensors_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_serialport.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_serialport_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_service_support_private.pri:
@@ -838,6 +868,8 @@ compiler_moc_header_clean:
 build/moc/moc_container_element.cpp: include/container_element.h \
 		build/ui/ui_container_element.h \
 		include/headers.h \
+		include/container_operations.h \
+		include/utils.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/container_element.h -o build/moc/moc_container_element.cpp
@@ -852,6 +884,8 @@ build/moc/moc_nav.cpp: include/nav.h \
 build/moc/moc_vm_element.cpp: include/vm_element.h \
 		build/ui/ui_vm_element.h \
 		include/headers.h \
+		include/vm_operations.h \
+		include/utils.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/vm_element.h -o build/moc/moc_vm_element.cpp
@@ -887,7 +921,9 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 build/obj/container_element.o: src/container_element.cpp include/container_element.h \
 		build/ui/ui_container_element.h \
-		include/headers.h
+		include/headers.h \
+		include/container_operations.h \
+		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/container_element.o src/container_element.cpp
 
 build/obj/container_operations.o: src/container_operations.cpp include/container_operations.h \
@@ -902,10 +938,10 @@ build/obj/main.o: src/main.cpp include/main.h \
 		include/headers.h \
 		include/container_element.h \
 		build/ui/ui_container_element.h \
-		include/vm_element.h \
-		build/ui/ui_vm_element.h \
 		include/container_operations.h \
 		include/utils.h \
+		include/vm_element.h \
+		build/ui/ui_vm_element.h \
 		include/vm_operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
@@ -920,10 +956,10 @@ build/obj/ui_builder.o: src/ui_builder.cpp include/ui_builder.h \
 		include/headers.h \
 		include/container_element.h \
 		build/ui/ui_container_element.h \
-		include/vm_element.h \
-		build/ui/ui_vm_element.h \
 		include/container_operations.h \
 		include/utils.h \
+		include/vm_element.h \
+		build/ui/ui_vm_element.h \
 		include/vm_operations.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/ui_builder.o src/ui_builder.cpp
 
@@ -933,7 +969,9 @@ build/obj/utils.o: src/utils.cpp include/utils.h \
 
 build/obj/vm_element.o: src/vm_element.cpp include/vm_element.h \
 		build/ui/ui_vm_element.h \
-		include/headers.h
+		include/headers.h \
+		include/vm_operations.h \
+		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/vm_element.o src/vm_element.cpp
 
 build/obj/vm_operations.o: src/vm_operations.cpp include/vm_operations.h \

@@ -21,6 +21,10 @@ private slots:
     void stopContainer();
     void sendContainer();
 
+signals:
+    void containerUpdated(); 
+    void VMUpdated(); 
+
 private:
     Ui::ContainerElement *ui;
     QLabel *containerNameLabel;
