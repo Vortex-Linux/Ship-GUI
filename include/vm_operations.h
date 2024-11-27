@@ -6,6 +6,7 @@
 
 std::vector<std::string> list_vm_names();
 std::vector<std::string> list_vm_status();
+std::string list_updated_vm_status(std::string vm_name);
 void start_vm(std::string vm_name);
 void restart_vm(std::string vm_name);
 void delete_vm(std::string vm_name);

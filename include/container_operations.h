@@ -6,6 +6,7 @@
 
 std::vector<std::string> list_container_names();
 std::vector<std::string> list_container_status();
+std::string list_updated_container_status(std::string container_name);
 void delete_container(std::string container_name);
 void view_container(std::string container_name);
 void upgrade_container(std::string container_name);
