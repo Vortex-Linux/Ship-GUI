@@ -26,7 +26,7 @@ private slots:
     void sendVM();
 
 signals:
-    void VMUpdated(); 
+    void VMUpdated(const qstring &VMName); 
 
 private:
     Ui::VMElement *ui;
