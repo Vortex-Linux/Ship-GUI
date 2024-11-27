@@ -34,31 +34,31 @@ std::string ContainerElement::getContainerName() const {
 void ContainerElement::deleteContainer() {
     std::string containerName = getContainerName();
     delete_container(containerName);
-    emit containerUpdated(QString::fromStdString(containerName));
+    emit containerUpdated(containerName);
 }
 
 void ContainerElement::viewContainer() {
     std::string containerName = getContainerName();
     view_container(containerName);
-    emit containerUpdated(QString::fromStdString(containerName));
+    emit containerUpdated(containerName);
 }
 
 void ContainerElement::upgradeContainer() {
     std::string containerName = getContainerName();
     upgrade_container(containerName);
-    emit containerUpdated(QString::fromStdString(containerName));
+    emit containerUpdated(containerName);
 }
 
 void ContainerElement::stopContainer() {
     std::string containerName = getContainerName();
     stop_container(containerName);
-    emit containerUpdated(QString::fromStdString(containerName));
+    emit containerUpdated(containerName);
 }
 
 void ContainerElement::sendContainer() {
     std::string containerName = getContainerName();
     send_container(containerName);
-    emit containerUpdated(QString::fromStdString(containerName));
+    emit containerUpdated(containerName);
 }
 
 void ContainerElement::setContainerName(const QString &name) {

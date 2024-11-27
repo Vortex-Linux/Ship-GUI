@@ -23,9 +23,9 @@ QScrollArea* createContainerWidget() {
         layout->addWidget(element);
 
         QObject::connect(element, &ContainerElement::containerUpdated, 
-            [=](const QString &containerName) mutable {
+            [=](const std::string &containerName) mutable {
                 if (containerName == element->getContainerName()) {
-                    element->setContainerStatus(list_updated_container_status(containerName));
+                    element->setContainerStatus(QString::fromStdString(list_updated_container_status(containerName)));
                 }
             }
         );
