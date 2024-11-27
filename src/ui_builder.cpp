@@ -60,9 +60,9 @@ QScrollArea* createVMWidget() {
         layout->addWidget(element);
 
         QObject::connect(element, &VMElement::VMUpdated, 
-            [=](const QString &VMName) mutable {
+            [=](const std::string &VMName) mutable {
                 if (VMName == element->getVMName()) {
-                    element->setVMStatus(list_updated_vm_status(VMName));
+                    element->setVMStatus(QString::fromStdString(list_updated_vm_status(VMName)));
                 }
             }
         );

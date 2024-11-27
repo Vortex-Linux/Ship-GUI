@@ -12,6 +12,7 @@ public:
     explicit VMElement(QWidget *parent = nullptr);
     void setVMName(const QString &name);
     void setVMStatus(const QString &status);
+    std::string getVMName() const;
     ~VMElement();
 
 private slots:
@@ -26,14 +27,12 @@ private slots:
     void sendVM();
 
 signals:
-    void VMUpdated(const qstring &VMName); 
+    void VMUpdated(const std::string &VMName); 
 
 private:
     Ui::VMElement *ui;
     QLabel *VMNameLabel;
     QLabel *VMStatusLabel;
-
-    std::string getVMName() const;
 
     template <typename Func>
     void addActionToMenu(const QString &actionText, Func slot);

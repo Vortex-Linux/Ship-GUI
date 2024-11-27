@@ -22,7 +22,7 @@ private slots:
     void sendContainer();
 
 signals:
-    void containerUpdated(const qstring &ContaineName); 
+    void containerUpdated(const QString &ContaineName); 
 
 private:
     Ui::ContainerElement *ui;
