@@ -63,12 +63,16 @@ QScrollArea* createVMWidget() {
         layout->addWidget(element);
 
         QObject::connect(element, &VMElement::VMUpdated, 
-            [=](const std::string &VMName) mutable {
-                if (VMName == element->getVMName()) {
-                    element->setVMStatus(QString::fromStdString(list_updated_vm_status(VMName)));
-                }
+            [=](const std::string &VMName) {
+                QtConcurrent::run([=]() {
+                  QString newStatus = QString::fromStdString(list_updated_vm_status(VMName));
+                  QMetaObject::invokeMethod(element, [=]() {
+                      element->setVMStatus(newStatus);
+                  }, Qt::QueuedConnection);
+                });
             }
         );
+
     }
 
     layout->insertStretch(-1, 1);
