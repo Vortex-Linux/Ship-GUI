@@ -21,10 +21,25 @@ void loadWidgetStyleSheet(QWidget *widget, const QString &fileName) {
 }
 
 void system_exec(const std::string& cmd) {
-    int return_code = system(cmd.c_str());
+    QString qCmd = QString::fromStdString(cmd);
+    QProcess process;
+    QStringList arguments = QProcess::splitCommand(qCmd);
+    if (arguments.isEmpty()) {
+        qCritical() << "Invalid command:" << qCmd;
+        std::exit(EXIT_FAILURE);
+    }
 
-    if (return_code != 0) {
-        std::cerr << "Failed to execute command: " << cmd << std::endl;
+    QString program = arguments.takeFirst(); 
+    process.start(program, arguments);
+
+    if (!process.waitForFinished()) {
+        qCritical() << "Failed to execute command:" << qCmd;
+        qCritical() << "Error:" << process.errorString();
+        std::exit(EXIT_FAILURE);
+    }
+
+    if (process.exitStatus() != QProcess::NormalExit || process.exitCode() != 0) {
+        qCritical() << "Command failed with exit code:" << process.exitCode();
         std::exit(EXIT_FAILURE);
     }
 }
