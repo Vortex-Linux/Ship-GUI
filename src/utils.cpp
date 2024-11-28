@@ -55,9 +55,7 @@ std::string exec(const std::string& cmd) {
     QString program = arguments.takeFirst();
     process.start(program, arguments);
 
-    if (!process.waitForFinished()) {
-        throw std::runtime_error("Failed to execute command: " + qCmd.toStdString());
-    }
+    process.waitForFinished();
 
     if (process.exitStatus() != QProcess::NormalExit) {
         throw std::runtime_error("Command crashed: " + qCmd.toStdString());
@@ -69,7 +67,6 @@ std::string exec(const std::string& cmd) {
 
     return process.readAllStandardOutput().toStdString();
 }
-
 
 std::vector<std::string> list_items(const std::string& input_text) {
     std::vector<std::string> item_list;
