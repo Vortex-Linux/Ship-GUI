@@ -23,10 +23,13 @@ QScrollArea* createContainerWidget() {
         layout->addWidget(element);
 
         QObject::connect(element, &ContainerElement::containerUpdated, 
-            [=](const std::string &containerName) mutable {
-                if (containerName == element->getContainerName()) {
-                    element->setContainerStatus(QString::fromStdString(list_updated_container_status(containerName)));
-                }
+            [=](const std::string &containerName) {
+                QtConcurrent::run([=]() {
+                    QString newStatus = QString::fromStdString(list_updated_container_status(containerName));
+                    QMetaObject::invokeMethod(element, [=]() {
+                        element->setContainerStatus(newStatus);
+                    }, Qt::QueuedConnection);
+                });
             }
         );
     }

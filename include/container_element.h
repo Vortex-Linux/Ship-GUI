@@ -23,7 +23,7 @@ private slots:
     void sendContainer();
 
 signals:
-    void containerUpdated(const std::string &ContaineName); 
+    void containerUpdated(const std::string &ContainerName); 
 
 private:
     Ui::ContainerElement *ui;

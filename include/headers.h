@@ -4,6 +4,11 @@
 #include <QApplication>
 #include <QWidget>
 #include <QProcess>
+#include <QObject>  
+#include <QtConcurrent/QtConcurrent>
+#include <QMetaObject>
+#include <QThread>
+#include <QThreadPool>
 #include <QScrollArea>
 #include <QPushButton>
 #include <QStackedWidget>
