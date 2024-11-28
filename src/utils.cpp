@@ -21,7 +21,7 @@ void loadWidgetStyleSheet(QWidget *widget, const QString &fileName) {
 }
 
 void system_exec(const std::string& cmd) {
-    QString qCmd = QString::fromStdString(cmd);
+    QString qCmd = QString::fromStdString("bash -c \"" + cmd + "\"");
     QProcess process;
     QStringList arguments = QProcess::splitCommand(qCmd);
     if (arguments.isEmpty()) {
@@ -45,14 +45,14 @@ void system_exec(const std::string& cmd) {
 }
 
 std::string exec(const std::string& cmd) {
-    QString qCmd = QString::fromStdString(cmd);
+    QString qCmd = QString::fromStdString("bash -c \"" + cmd + "\"");
     QProcess process;
     QStringList arguments = QProcess::splitCommand(qCmd);
     if (arguments.isEmpty()) {
         throw std::runtime_error("Invalid command: " + qCmd.toStdString());
     }
 
-    QString program = arguments.takeFirst(); 
+    QString program = arguments.takeFirst();
     process.start(program, arguments);
 
     if (!process.waitForFinished()) {
@@ -63,8 +63,13 @@ std::string exec(const std::string& cmd) {
         throw std::runtime_error("Command crashed: " + qCmd.toStdString());
     }
 
+    if (process.exitCode() != 0) {
+        throw std::runtime_error("Command error: " + process.readAllStandardError().toStdString());
+    }
+
     return process.readAllStandardOutput().toStdString();
 }
+
 
 std::vector<std::string> list_items(const std::string& input_text) {
     std::vector<std::string> item_list;
