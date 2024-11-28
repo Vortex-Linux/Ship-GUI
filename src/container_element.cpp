@@ -21,10 +21,10 @@ void ContainerElement::addActionToMenu(const QString &actionText, Func slot) {
 
 void ContainerElement::createMenu() {
     addActionToMenu("Delete Container", &ContainerElement::deleteContainer);
-    addActionToMenu("View VM", &ContainerElement::viewContainer);
-    addActionToMenu("Upgrade VM", &ContainerElement::upgradeContainer);
-    addActionToMenu("Stop VM", &ContainerElement::stopContainer);
-    addActionToMenu("Send VM", &ContainerElement::sendContainer);
+    addActionToMenu("View Container", &ContainerElement::viewContainer);
+    addActionToMenu("Upgrade Container", &ContainerElement::upgradeContainer);
+    addActionToMenu("Stop Container", &ContainerElement::stopContainer);
+    addActionToMenu("Send Container", &ContainerElement::sendContainer);
 }
 
 std::string ContainerElement::getContainerName() const {
