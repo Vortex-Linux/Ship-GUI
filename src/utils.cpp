@@ -45,16 +45,25 @@ void system_exec(const std::string& cmd) {
 }
 
 std::string exec(const std::string& cmd) {
-    std::array<char, 128> buffer;
-    std::string result;
-    std::unique_ptr<FILE, int (*)(FILE*)> pipe(popen(cmd.c_str(), "r"), pclose);
-    if (!pipe) {
-        throw std::runtime_error("popen() failed!");
+    QString qCmd = QString::fromStdString(cmd);
+    QProcess process;
+    QStringList arguments = QProcess::splitCommand(qCmd);
+    if (arguments.isEmpty()) {
+        throw std::runtime_error("Invalid command: " + qCmd.toStdString());
     }
-    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
-        result += buffer.data();
+
+    QString program = arguments.takeFirst(); 
+    process.start(program, arguments);
+
+    if (!process.waitForFinished()) {
+        throw std::runtime_error("Failed to execute command: " + qCmd.toStdString());
     }
-    return result;
+
+    if (process.exitStatus() != QProcess::NormalExit) {
+        throw std::runtime_error("Command crashed: " + qCmd.toStdString());
+    }
+
+    return process.readAllStandardOutput().toStdString();
 }
 
 std::vector<std::string> list_items(const std::string& input_text) {
