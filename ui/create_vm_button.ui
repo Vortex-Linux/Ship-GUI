@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui version="4.0">
+    <class>createVMButton</class>
+    <widget class="QWidget" name="createVMButton">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>300</width>
+                <height>50</height>
+            </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+                <widget class="QPushButton" name="pushButton">
+                    <property name="text">
+                        <string>Create VM</string>
+                    </property>
+                </widget>
+            </item>
+        </layout>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>

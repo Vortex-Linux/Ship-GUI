@@ -81,6 +81,10 @@ QScrollArea* createVMWidget() {
 
     layout->insertStretch(-1, 1);
 
+    createVMButton* create_vm_button = new createVMButton();
+    loadWidgetStyleSheet(create_vm_button, ":/styles/styles/create_vm_button.qss");
+    layout->addWidget(create_vm_button);
+
     VMWidget->setLayout(layout);
 
     QScrollArea* scrollArea = new QScrollArea();

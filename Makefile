@@ -55,6 +55,7 @@ OBJECTS_DIR   = build/obj/
 SOURCES       = src/container_element.cpp \
 		src/container_operations.cpp \
 		src/create_container_button.cpp \
+		src/create_vm_button.cpp \
 		src/main.cpp \
 		src/nav.cpp \
 		src/ui_builder.cpp \
@@ -64,11 +65,13 @@ SOURCES       = src/container_element.cpp \
 		qrc_images.cpp \
 		build/moc/moc_container_element.cpp \
 		build/moc/moc_create_container_button.cpp \
+		build/moc/moc_create_vm_button.cpp \
 		build/moc/moc_nav.cpp \
 		build/moc/moc_vm_element.cpp
 OBJECTS       = build/obj/container_element.o \
 		build/obj/container_operations.o \
 		build/obj/create_container_button.o \
+		build/obj/create_vm_button.o \
 		build/obj/main.o \
 		build/obj/nav.o \
 		build/obj/ui_builder.o \
@@ -79,6 +82,7 @@ OBJECTS       = build/obj/container_element.o \
 		build/obj/qrc_images.o \
 		build/obj/moc_container_element.o \
 		build/obj/moc_create_container_button.o \
+		build/obj/moc_create_vm_button.o \
 		build/obj/moc_nav.o \
 		build/obj/moc_vm_element.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -313,6 +317,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		Ship-GUI.pro include/container_element.h \
 		include/container_operations.h \
 		include/create_container_button.h \
+		include/create_vm_button.h \
 		include/headers.h \
 		include/main.h \
 		include/nav.h \
@@ -322,6 +327,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		include/vm_operations.h src/container_element.cpp \
 		src/container_operations.cpp \
 		src/create_container_button.cpp \
+		src/create_vm_button.cpp \
 		src/main.cpp \
 		src/nav.cpp \
 		src/ui_builder.cpp \
@@ -336,7 +342,7 @@ TARGET        = build/Ship-GUI
 first: all
 ####### Build rules
 
-build/Ship-GUI: build/ui/ui_container_element.h build/ui/ui_create_container_button.h build/ui/ui_nav.h build/ui/ui_vm_element.h $(OBJECTS)  
+build/Ship-GUI: build/ui/ui_container_element.h build/ui/ui_create_container_button.h build/ui/ui_create_vm_button.h build/ui/ui_nav.h build/ui/ui_vm_element.h $(OBJECTS)  
 	@test -d build/ || mkdir -p build/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -821,9 +827,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents resources/styles.qrc resources/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents include/container_element.h include/container_operations.h include/create_container_button.h include/headers.h include/main.h include/nav.h include/ui_builder.h include/utils.h include/vm_element.h include/vm_operations.h $(DISTDIR)/
-	$(COPY_FILE) --parents src/container_element.cpp src/container_operations.cpp src/create_container_button.cpp src/main.cpp src/nav.cpp src/ui_builder.cpp src/utils.cpp src/vm_element.cpp src/vm_operations.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ui/container_element.ui ui/create_container_button.ui ui/nav.ui ui/vm_element.ui $(DISTDIR)/
+	$(COPY_FILE) --parents include/container_element.h include/container_operations.h include/create_container_button.h include/create_vm_button.h include/headers.h include/main.h include/nav.h include/ui_builder.h include/utils.h include/vm_element.h include/vm_operations.h $(DISTDIR)/
+	$(COPY_FILE) --parents src/container_element.cpp src/container_operations.cpp src/create_container_button.cpp src/create_vm_button.cpp src/main.cpp src/nav.cpp src/ui_builder.cpp src/utils.cpp src/vm_element.cpp src/vm_operations.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ui/container_element.ui ui/create_container_button.ui ui/create_vm_button.ui ui/nav.ui ui/vm_element.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -870,9 +876,9 @@ compiler_moc_predefs_clean:
 build/moc/moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -O2 -flto -fno-fat-lto-objects -Wall -Wextra -dM -E -o build/moc/moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: build/moc/moc_container_element.cpp build/moc/moc_create_container_button.cpp build/moc/moc_nav.cpp build/moc/moc_vm_element.cpp
+compiler_moc_header_make_all: build/moc/moc_container_element.cpp build/moc/moc_create_container_button.cpp build/moc/moc_create_vm_button.cpp build/moc/moc_nav.cpp build/moc/moc_vm_element.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) build/moc/moc_container_element.cpp build/moc/moc_create_container_button.cpp build/moc/moc_nav.cpp build/moc/moc_vm_element.cpp
+	-$(DEL_FILE) build/moc/moc_container_element.cpp build/moc/moc_create_container_button.cpp build/moc/moc_create_vm_button.cpp build/moc/moc_nav.cpp build/moc/moc_vm_element.cpp
 build/moc/moc_container_element.cpp: include/container_element.h \
 		build/ui/ui_container_element.h \
 		include/headers.h \
@@ -888,6 +894,13 @@ build/moc/moc_create_container_button.cpp: include/create_container_button.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/create_container_button.h -o build/moc/moc_create_container_button.cpp
+
+build/moc/moc_create_vm_button.cpp: include/create_vm_button.h \
+		build/ui/ui_create_vm_button.h \
+		include/headers.h \
+		build/moc/moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/create_vm_button.h -o build/moc/moc_create_vm_button.cpp
 
 build/moc/moc_nav.cpp: include/nav.h \
 		build/ui/ui_nav.h \
@@ -909,9 +922,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: build/ui/ui_container_element.h build/ui/ui_create_container_button.h build/ui/ui_nav.h build/ui/ui_vm_element.h
+compiler_uic_make_all: build/ui/ui_container_element.h build/ui/ui_create_container_button.h build/ui/ui_create_vm_button.h build/ui/ui_nav.h build/ui/ui_vm_element.h
 compiler_uic_clean:
-	-$(DEL_FILE) build/ui/ui_container_element.h build/ui/ui_create_container_button.h build/ui/ui_nav.h build/ui/ui_vm_element.h
+	-$(DEL_FILE) build/ui/ui_container_element.h build/ui/ui_create_container_button.h build/ui/ui_create_vm_button.h build/ui/ui_nav.h build/ui/ui_vm_element.h
 build/ui/ui_container_element.h: ui/container_element.ui \
 		/usr/bin/uic
 	/usr/bin/uic ui/container_element.ui -o build/ui/ui_container_element.h
@@ -919,6 +932,10 @@ build/ui/ui_container_element.h: ui/container_element.ui \
 build/ui/ui_create_container_button.h: ui/create_container_button.ui \
 		/usr/bin/uic
 	/usr/bin/uic ui/create_container_button.ui -o build/ui/ui_create_container_button.h
+
+build/ui/ui_create_vm_button.h: ui/create_vm_button.ui \
+		/usr/bin/uic
+	/usr/bin/uic ui/create_vm_button.ui -o build/ui/ui_create_vm_button.h
 
 build/ui/ui_nav.h: ui/nav.ui \
 		/usr/bin/uic
@@ -955,6 +972,11 @@ build/obj/create_container_button.o: src/create_container_button.cpp include/cre
 		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/create_container_button.o src/create_container_button.cpp
 
+build/obj/create_vm_button.o: src/create_vm_button.cpp include/create_vm_button.h \
+		build/ui/ui_create_vm_button.h \
+		include/headers.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/create_vm_button.o src/create_vm_button.cpp
+
 build/obj/main.o: src/main.cpp include/main.h \
 		include/ui_builder.h \
 		include/nav.h \
@@ -968,7 +990,9 @@ build/obj/main.o: src/main.cpp include/main.h \
 		build/ui/ui_vm_element.h \
 		include/vm_operations.h \
 		include/create_container_button.h \
-		build/ui/ui_create_container_button.h
+		build/ui/ui_create_container_button.h \
+		include/create_vm_button.h \
+		build/ui/ui_create_vm_button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
 build/obj/nav.o: src/nav.cpp include/nav.h \
@@ -988,7 +1012,9 @@ build/obj/ui_builder.o: src/ui_builder.cpp include/ui_builder.h \
 		build/ui/ui_vm_element.h \
 		include/vm_operations.h \
 		include/create_container_button.h \
-		build/ui/ui_create_container_button.h
+		build/ui/ui_create_container_button.h \
+		include/create_vm_button.h \
+		build/ui/ui_create_vm_button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/ui_builder.o src/ui_builder.cpp
 
 build/obj/utils.o: src/utils.cpp include/utils.h \
@@ -1018,6 +1044,9 @@ build/obj/moc_container_element.o: build/moc/moc_container_element.cpp
 
 build/obj/moc_create_container_button.o: build/moc/moc_create_container_button.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_create_container_button.o build/moc/moc_create_container_button.cpp
+
+build/obj/moc_create_vm_button.o: build/moc/moc_create_vm_button.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_create_vm_button.o build/moc/moc_create_vm_button.cpp
 
 build/obj/moc_nav.o: build/moc/moc_nav.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/moc_nav.o build/moc/moc_nav.cpp
