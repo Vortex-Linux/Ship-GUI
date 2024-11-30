@@ -52,10 +52,9 @@ QScrollArea* createContainerWidget() {
 
     createContainerButton* create_container_button = new createContainerButton();
     loadWidgetStyleSheet(create_container_button, ":/styles/styles/create_container_button.qss");
-    create_container_button->setFixedSize(750, 50);
+    create_container_button->setFixedSize(750, 100);
 
     mainLayout->addWidget(scrollArea);
-    mainLayout->addSpacing(20);
     mainLayout->addWidget(create_container_button);
     mainLayout->addStretch(1);  
 
@@ -115,10 +114,9 @@ QScrollArea* createVMWidget() {
 
     createVMButton* create_vm_button = new createVMButton();
     loadWidgetStyleSheet(create_vm_button, ":/styles/styles/create_vm_button.qss");
-    create_vm_button->setFixedSize(750, 50);
+    create_vm_button->setFixedSize(750, 100);
 
     mainLayout->addWidget(scrollArea);
-    mainLayout->addSpacing(20);
     mainLayout->addWidget(create_vm_button);
     mainLayout->addStretch(1);  
 
