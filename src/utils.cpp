@@ -68,6 +68,15 @@ std::string exec(const std::string& cmd) {
     return process.readAllStandardOutput().toStdString();
 }
 
+void run_in_terminal(const std::string& cmd) {
+    if (system("which xterm > /dev/null 2>&1") == 0) {
+        std::string terminal_cmd = "xterm -e \"" + cmd + "\"";
+        system(terminal_cmd.c_str());
+    } else {
+        std::cerr << "xterm is not installed!" << std::endl;
+    }
+}
+
 std::vector<std::string> list_items(const std::string& input_text) {
     std::vector<std::string> item_list;
     std::istringstream input_stream(input_text);

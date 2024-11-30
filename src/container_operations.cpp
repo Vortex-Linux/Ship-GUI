@@ -23,7 +23,7 @@ void delete_container(std::string container_name) {
 
 void view_container(std::string container_name) {
     std::string view_container_cmd = "ship --ctr view " + container_name;
-    exec(view_container_cmd);
+    run_in_terminal(view_container_cmd);
 }
 
 void upgrade_container(std::string container_name) {

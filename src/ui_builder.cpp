@@ -36,6 +36,10 @@ QScrollArea* createContainerWidget() {
 
     layout->insertStretch(-1, 1);
 
+    createContainerButton* create_container_button = new createContainerButton();
+    loadWidgetStyleSheet(create_container_button, ":/styles/styles/create_container_button_style.qss");
+    layout->addWidget(create_container_button);
+
     containerWidget->setLayout(layout);
 
     QScrollArea* scrollArea = new QScrollArea();

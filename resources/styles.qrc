@@ -4,6 +4,8 @@
         <file>styles/nav.qss</file>
         <file>styles/container_element.qss</file>
         <file>styles/vm_element.qss</file>
+        <file>styles/create_container_button.qss</file>
+        <file>styles/create_vm_button.qss</file>
     </qresource>
 </RCC>
 
