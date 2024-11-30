@@ -8,19 +8,28 @@ Nav* createNav(QWidget* parent) {
 }
 
 QScrollArea* createContainerWidget() {
+    QWidget* containerMainWidget = new QWidget();
+    QVBoxLayout* mainLayout = new QVBoxLayout(containerMainWidget);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
+    mainLayout->setSpacing(0);
+
+    QWidget* containerContentWidget = new QWidget();
+    QVBoxLayout* contentLayout = new QVBoxLayout(containerContentWidget);
+    contentLayout->setContentsMargins(0, 0, 0, 0);
+    contentLayout->setSpacing(10);
+
     std::vector<std::string> containerNames = list_container_names(); 
     std::vector<std::string> containerStatus = list_container_status(); 
 
-    QWidget* containerWidget = new QWidget();
-    QVBoxLayout* layout = new QVBoxLayout(containerWidget);
-
+    int maxScrollHeight = 600; 
+    
     for (size_t i = 0; i < containerNames.size(); ++i) {
         ContainerElement* element = new ContainerElement();
         element->setContainerName(QString::fromStdString(containerNames[i]));
         element->setContainerStatus(QString::fromStdString(containerStatus[i]));
         loadWidgetStyleSheet(element, ":/styles/styles/container_element.qss");
         element->setFixedSize(750, 100);
-        layout->addWidget(element);
+        contentLayout->addWidget(element);
 
         QObject::connect(element, &ContainerElement::containerUpdated, 
             [=](const std::string &containerName) {
@@ -34,37 +43,56 @@ QScrollArea* createContainerWidget() {
         );
     }
 
-    layout->insertStretch(-1, 1);
+    QScrollArea* scrollArea = new QScrollArea();
+    scrollArea->setWidget(containerContentWidget);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setFixedHeight(maxScrollHeight);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
     createContainerButton* create_container_button = new createContainerButton();
     loadWidgetStyleSheet(create_container_button, ":/styles/styles/create_container_button.qss");
-    layout->addWidget(create_container_button);
+    create_container_button->setFixedSize(750, 50);
 
-    containerWidget->setLayout(layout);
+    mainLayout->addWidget(scrollArea);
+    mainLayout->addSpacing(20);
+    mainLayout->addWidget(create_container_button);
+    mainLayout->addStretch(1);  
 
-    QScrollArea* scrollArea = new QScrollArea();
-    scrollArea->setWidget(containerWidget);
-    scrollArea->setWidgetResizable(true); 
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); 
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    containerMainWidget->setLayout(mainLayout);
 
-    return scrollArea;
+    QScrollArea* finalScrollArea = new QScrollArea();
+    finalScrollArea->setWidget(containerMainWidget);
+    finalScrollArea->setWidgetResizable(true);
+    finalScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    finalScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    return finalScrollArea;
 }
 
 QScrollArea* createVMWidget() {
+    QWidget* VMMainWidget = new QWidget();
+    QVBoxLayout* mainLayout = new QVBoxLayout(VMMainWidget);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
+    mainLayout->setSpacing(0);
+
+    QWidget* VMContentWidget = new QWidget();
+    QVBoxLayout* contentLayout = new QVBoxLayout(VMContentWidget);
+    contentLayout->setContentsMargins(0, 0, 0, 0);
+    contentLayout->setSpacing(10);
+
     std::vector<std::string> VMnames = list_vm_names(); 
     std::vector<std::string> VMstatus = list_vm_status(); 
 
-    QWidget* VMWidget = new QWidget();
-    QVBoxLayout* layout = new QVBoxLayout(VMWidget);
-
+    int maxScrollHeight = 600; 
+    
     for (size_t i = 0; i < VMnames.size(); ++i) {
         VMElement* element = new VMElement();
         element->setVMName(QString::fromStdString(VMnames[i]));
         element->setVMStatus(QString::fromStdString(VMstatus[i])); 
         loadWidgetStyleSheet(element, ":/styles/styles/vm_element.qss");
         element->setFixedSize(750, 100);
-        layout->addWidget(element);
+        contentLayout->addWidget(element);
 
         QObject::connect(element, &VMElement::VMUpdated, 
             [=](const std::string &VMName) {
@@ -76,22 +104,31 @@ QScrollArea* createVMWidget() {
                 });
             }
         );
-
     }
 
-    layout->insertStretch(-1, 1);
+    QScrollArea* scrollArea = new QScrollArea();
+    scrollArea->setWidget(VMContentWidget);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setFixedHeight(maxScrollHeight);
+    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
     createVMButton* create_vm_button = new createVMButton();
     loadWidgetStyleSheet(create_vm_button, ":/styles/styles/create_vm_button.qss");
-    layout->addWidget(create_vm_button);
+    create_vm_button->setFixedSize(750, 50);
 
-    VMWidget->setLayout(layout);
+    mainLayout->addWidget(scrollArea);
+    mainLayout->addSpacing(20);
+    mainLayout->addWidget(create_vm_button);
+    mainLayout->addStretch(1);  
 
-    QScrollArea* scrollArea = new QScrollArea();
-    scrollArea->setWidget(VMWidget);
-    scrollArea->setWidgetResizable(true); 
-    scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); 
-    scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    VMMainWidget->setLayout(mainLayout);
 
-    return scrollArea;
+    QScrollArea* finalScrollArea = new QScrollArea();
+    finalScrollArea->setWidget(VMMainWidget);
+    finalScrollArea->setWidgetResizable(true);
+    finalScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    finalScrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    return finalScrollArea;
 }
