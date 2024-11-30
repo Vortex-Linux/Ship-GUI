@@ -950,8 +950,8 @@ build/obj/container_operations.o: src/container_operations.cpp include/container
 		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/container_operations.o src/container_operations.cpp
 
-build/obj/create_container_button.o: src/create_container_button.cpp include/nav.h \
-		build/ui/ui_nav.h \
+build/obj/create_container_button.o: src/create_container_button.cpp include/create_container_button.h \
+		build/ui/ui_create_container_button.h \
 		include/headers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/create_container_button.o src/create_container_button.cpp
 
@@ -966,7 +966,9 @@ build/obj/main.o: src/main.cpp include/main.h \
 		include/utils.h \
 		include/vm_element.h \
 		build/ui/ui_vm_element.h \
-		include/vm_operations.h
+		include/vm_operations.h \
+		include/create_container_button.h \
+		build/ui/ui_create_container_button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/main.o src/main.cpp
 
 build/obj/nav.o: src/nav.cpp include/nav.h \
@@ -984,7 +986,9 @@ build/obj/ui_builder.o: src/ui_builder.cpp include/ui_builder.h \
 		include/utils.h \
 		include/vm_element.h \
 		build/ui/ui_vm_element.h \
-		include/vm_operations.h
+		include/vm_operations.h \
+		include/create_container_button.h \
+		build/ui/ui_create_container_button.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/ui_builder.o src/ui_builder.cpp
 
 build/obj/utils.o: src/utils.cpp include/utils.h \
