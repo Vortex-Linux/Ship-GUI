@@ -1,2 +1,14 @@
 <RCC>
+    <qresource prefix="/images">
+        <file>images/styles.qss</file>
+        <file>images/nav.qss</file>
+        <file>images/container_element.qss</file>
+        <file>images/vm_element.qss</file>
+        <file>images/create_container_button.qss</file>
+        <file>images/create_vm_button.qss</file>
+        <file>images/create_container_page.qss</file>
+        <file>images/create_vm_page.qss</file>
+    </qresource>
 </RCC>
+
+
