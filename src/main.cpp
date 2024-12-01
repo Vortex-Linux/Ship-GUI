@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
     QScrollArea* containerWidget = createContainerWidget();
     QScrollArea* VMWidget = createVMWidget();
 
-    QScrollArea* createContainerPage = createContainerPage();
-    QScrollArea* createVMPage = createVMPage();
+    createContainerPage* createContainerPage = createContainerPage();
+    createVMPage* createVMPage = createVMPage();
 
     QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);

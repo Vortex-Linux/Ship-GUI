@@ -130,3 +130,20 @@ QScrollArea* createVMWidget() {
 
     return finalScrollArea;
 }
+
+createContainerPage* createContainerPage() {
+    createContainerPage* create_container_page = new createContainerPage();
+    create_container_page->setFixedSize(800, 700);
+    loadWidgetStyleSheet(nav, ":/styles/styles/createContainerPage.qss");
+    return create_container_page;
+}
+
+createVMPage* createVMPage() {
+    createVMPage* create_vm_page = new createVMPage();
+    create_vm_page->setFixedSize(800, 700);
+    loadWidgetStyleSheet(nav, ":/styles/styles/createVMPage.qss");
+    return create_vm_page;
+
+}
+
+
