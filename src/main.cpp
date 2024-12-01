@@ -17,23 +17,15 @@ int main(int argc, char *argv[]) {
     QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);
     stackedWidget->addWidget(VMWidget);
+    stackedWidget->setCurrentWidget(containerWidget);
+
     layout->addWidget(stackedWidget); 
 
-    QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) mutable {
-        QWidget* currentWidget = stackedWidget->currentWidget();
-        if (currentWidget) {
-            stackedWidget->removeWidget(currentWidget);
-            delete currentWidget;
-        }
-
+    QObject::connect(nav, &Nav::buttonClicked, [=](const QString &buttonName) {
         if (buttonName == "containers") {
-            QScrollArea* containerWidget = createContainerWidget();
-            stackedWidget->addWidget(containerWidget); 
-            stackedWidget->setCurrentWidget(containerWidget); 
+            stackedWidget->setCurrentWidget(containerWidget);
         } else if (buttonName == "virtual_machines") {
-            QScrollArea* VMWidget = createVMWidget();
-            stackedWidget->addWidget(VMWidget); 
-            stackedWidget->setCurrentWidget(VMWidget); 
+            stackedWidget->setCurrentWidget(VMWidget);
         }
     });
 
@@ -42,21 +34,11 @@ int main(int argc, char *argv[]) {
 
     if (create_container_button) {
         QObject::connect(create_container_button, &createContainerButton::buttonClicked, [=](const QString& buttonName) {
-            QWidget* currentWidget = stackedWidget->currentWidget();
-            if (currentWidget) {
-                stackedWidget->removeWidget(currentWidget);
-                delete currentWidget;
-            }
         });
     }
 
     if (create_vm_button) {
         QObject::connect(create_vm_button, &createVMButton::buttonClicked, [=](const QString& buttonName) {
-            QWidget* currentWidget = stackedWidget->currentWidget();
-            if (currentWidget) {
-                stackedWidget->removeWidget(currentWidget);
-                delete currentWidget;
-            }
         });
     }
 
