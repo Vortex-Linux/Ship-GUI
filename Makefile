@@ -882,14 +882,7 @@ qrc_styles.cpp: resources/styles.qrc \
 
 qrc_images.cpp: resources/images.qrc \
 		/usr/bin/rcc \
-		resources/images/vm_element.qss \
-		resources/images/create_container_page.qss \
-		resources/images/nav.qss \
-		resources/images/styles.qss \
-		resources/images/create_container_button.qss \
-		resources/images/container_element.qss \
-		resources/images/create_vm_button.qss \
-		resources/images/create_vm_page.qss
+		resources/images/archlinux.png
 	/usr/bin/rcc -name images resources/images.qrc -o qrc_images.cpp
 
 compiler_moc_predefs_make_all: build/moc/moc_predefs.h

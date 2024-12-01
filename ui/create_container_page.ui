@@ -51,48 +51,10 @@
       <item row="0" column="0">
        <widget class="QPushButton" name="container1Button">
         <property name="text">
-         <string>Container 1</string>
+         <string>ArchLinux</string>
         </property>
         <property name="icon">
-         <icon>
-          <normaloff>:/images/images/container1.png</normaloff>
-         </icon>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="container2Button">
-        <property name="text">
-         <string>Container 2</string>
-        </property>
-        <property name="icon">
-         <icon>
-          <normaloff>:/images/images/container2.png</normaloff>
-         </icon>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="container3Button">
-        <property name="text">
-         <string>Container 3</string>
-        </property>
-        <property name="icon">
-         <icon>
-          <normaloff>:/images/images/container3.png</normaloff>
-         </icon>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="container4Button">
-        <property name="text">
-         <string>Container 4</string>
-        </property>
-        <property name="icon">
-         <icon>
-          <normaloff>:/images/images/container4.png</normaloff>
-         </icon>
+          <iconset theme=":/images/images/archlinux.png"/>
         </property>
        </widget>
       </item>
