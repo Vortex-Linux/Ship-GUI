@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>createContainerPage</class>
+ <widget class="QWidget" name="createContainerPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Create Container</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   
+   <item>
+    <widget class="QPushButton" name="backButton">
+     <property name="text">
+      <string>Back</string>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+      <string>Select a container to create:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <widget class="QWidget" name="containerGridWidget">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="container1Button">
+        <property name="text">
+         <string>Container 1</string>
+        </property>
+        <property name="icon">
+         <icon>
+          <normaloff>:/images/container1.png</normaloff>
+         </icon>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="container2Button">
+        <property name="text">
+         <string>Container 2</string>
+        </property>
+        <property name="icon">
+         <icon>
+          <normaloff>:/images/container2.png</normaloff>
+         </icon>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="container3Button">
+        <property name="text">
+         <string>Container 3</string>
+        </property>
+        <property name="icon">
+         <icon>
+          <normaloff>:/images/container3.png</normaloff>
+         </icon>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="container4Button">
+        <property name="text">
+         <string>Container 4</string>
+        </property>
+        <property name="icon">
+         <icon>
+          <normaloff>:/images/container4.png</normaloff>
+         </icon>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+
+ </widget>
+</ui>
+
+
