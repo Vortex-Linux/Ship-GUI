@@ -55,7 +55,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/vm1.png</normaloff>
+          <normaloff>:/images/images/vm1.png</normaloff>
          </icon>
         </property>
        </widget>
@@ -67,7 +67,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/vm2.png</normaloff>
+          <normaloff>:/images/images/vm2.png</normaloff>
          </icon>
         </property>
        </widget>
@@ -79,7 +79,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/vm3.png</normaloff>
+          <normaloff>:/images/images/vm3.png</normaloff>
          </icon>
         </property>
        </widget>
@@ -91,7 +91,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/vm4.png</normaloff>
+          <normaloff>:/images/images/vm4.png</normaloff>
          </icon>
         </property>
        </widget>

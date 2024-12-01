@@ -55,7 +55,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/container1.png</normaloff>
+          <normaloff>:/images/images/container1.png</normaloff>
          </icon>
         </property>
        </widget>
@@ -67,7 +67,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/container2.png</normaloff>
+          <normaloff>:/images/images/container2.png</normaloff>
          </icon>
         </property>
        </widget>
@@ -79,7 +79,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/container3.png</normaloff>
+          <normaloff>:/images/images/container3.png</normaloff>
          </icon>
         </property>
        </widget>
@@ -91,7 +91,7 @@
         </property>
         <property name="icon">
          <icon>
-          <normaloff>:/images/container4.png</normaloff>
+          <normaloff>:/images/images/container4.png</normaloff>
          </icon>
         </property>
        </widget>
