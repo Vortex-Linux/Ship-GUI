@@ -37,6 +37,29 @@ int main(int argc, char *argv[]) {
         }
     });
 
+    createContainerButton* create_container_button = containerWidget->findChild<createContainerButton*>();
+    createVMButton* create_vm_button = VMWidget->findChild<createVMButton*>();
+
+    if (create_container_button) {
+        QObject::connect(create_container_button, &createContainerButton::buttonClicked, [=](const QString& buttonName) {
+            QWidget* currentWidget = stackedWidget->currentWidget();
+            if (currentWidget) {
+                stackedWidget->removeWidget(currentWidget);
+                delete currentWidget;
+            }
+        });
+    }
+
+    if (create_vm_button) {
+        QObject::connect(create_vm_button, &createVMButton::buttonClicked, [=](const QString& buttonName) {
+            QWidget* currentWidget = stackedWidget->currentWidget();
+            if (currentWidget) {
+                stackedWidget->removeWidget(currentWidget);
+                delete currentWidget;
+            }
+        });
+    }
+
     mainWindow.setLayout(layout);
     mainWindow.setFixedSize(800, 800);
     mainWindow.show();
