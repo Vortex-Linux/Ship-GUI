@@ -6,6 +6,8 @@
         <file>styles/vm_element.qss</file>
         <file>styles/create_container_button.qss</file>
         <file>styles/create_vm_button.qss</file>
+        <file>styles/create_container_page.qss</file>
+        <file>styles/create_vm_page.qss</file>
     </qresource>
 </RCC>
 
