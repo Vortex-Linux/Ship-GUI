@@ -14,9 +14,15 @@ int main(int argc, char *argv[]) {
     QScrollArea* containerWidget = createContainerWidget();
     QScrollArea* VMWidget = createVMWidget();
 
+    QScrollArea* createContainerPage = createContainerPage();
+    QScrollArea* createVMPage = createVMPage();
+
     QStackedWidget* stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(containerWidget);
     stackedWidget->addWidget(VMWidget);
+    stackedWidget->addWidget(createContainerPage);
+    stackedWidget->addWidget(createVMPage);
+
     stackedWidget->setCurrentWidget(containerWidget);
 
     layout->addWidget(stackedWidget); 
@@ -34,11 +40,13 @@ int main(int argc, char *argv[]) {
 
     if (create_container_button) {
         QObject::connect(create_container_button, &createContainerButton::buttonClicked, [=](const QString& buttonName) {
+            stackedWidget->setCurrentWidget(createContainerPage);
         });
     }
 
     if (create_vm_button) {
         QObject::connect(create_vm_button, &createVMButton::buttonClicked, [=](const QString& buttonName) {
+            stackedWidget->setCurrentWidget(createVMPage);
         });
     }
 
