@@ -16,33 +16,48 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    
    <item>
-    <widget class="QPushButton" name="backButton">
-     <property name="text">
-      <string>Back</string>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-    </widget>
-   </item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     
+     <item>
+      <widget class="QPushButton" name="backButton">
+       <property name="text">
+        <string>Back</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="fixedSize">
+        <size>
+          <width>100</width>
+          <height>50</height>
+        </size>
+      </property>
+      <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+      </property>
+      </widget>
+     </item>
 
-   <item>
-    <widget class="QLabel" name="titleLabel">
-     <property name="text">
-      <string>Select a container to create:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-     <property name="font">
-      <font>
-       <pointsize>16</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-    </widget>
+     <item>
+      <widget class="QLabel" name="titleLabel">
+       <property name="text">
+        <string>Select a container to create:</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>16</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
+      <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+      </property>
+      </widget>
+     </item>
+
+    </layout>
    </item>
 
    <item>
@@ -62,8 +77,5 @@
     </widget>
    </item>
   </layout>
-
  </widget>
 </ui>
-
-

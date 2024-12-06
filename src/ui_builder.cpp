@@ -145,5 +145,3 @@ createVMPage* create_vm_page() {
     return create_vm_page;
 
 }
-
-
