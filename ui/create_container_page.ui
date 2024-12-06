@@ -41,6 +41,23 @@
      </item>
 
      <item>
+       <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+        </spacer>
+     </item>
+
+     <item>
       <widget class="QLabel" name="titleLabel">
        <property name="text">
         <string>Select a container to create:</string>
@@ -56,7 +73,6 @@
       </property>
       </widget>
      </item>
-
     </layout>
    </item>
 
@@ -67,6 +83,15 @@
        <widget class="QPushButton" name="container1Button">
         <property name="text">
          <string>ArchLinux</string>
+        </property>
+        <property name="fixedSize">
+          <size>
+            <width>800</width>
+            <height>50</height>
+          </size>
+        </property>
+        <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
         </property>
         <property name="icon">
           <iconset theme=":/images/images/archlinux.png"/>
@@ -79,3 +104,4 @@
   </layout>
  </widget>
 </ui>
+
