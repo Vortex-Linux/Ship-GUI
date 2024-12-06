@@ -9,7 +9,7 @@ class createVMPage : public QWidget {
 
 public:
     explicit createVMPage(QWidget *parent = nullptr);
-    ~createVMButton();
+    ~createVMPage();
 
 signals:
     void buttonClicked(const QString &buttonName); 

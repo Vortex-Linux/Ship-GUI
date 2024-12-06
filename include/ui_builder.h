@@ -14,6 +14,8 @@
 Nav* createNav(QWidget* parent = nullptr);
 QScrollArea* createContainerWidget();
 QScrollArea* createVMWidget();
+createContainerPage* create_container_page();
+createVMPage* create_vm_page();
 
 #endif 
 

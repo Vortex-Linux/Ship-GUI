@@ -131,17 +131,17 @@ QScrollArea* createVMWidget() {
     return finalScrollArea;
 }
 
-createContainerPage* createContainerPage() {
+createContainerPage* create_container_page() {
     createContainerPage* create_container_page = new createContainerPage();
     create_container_page->setFixedSize(800, 700);
-    loadWidgetStyleSheet(nav, ":/styles/styles/createContainerPage.qss");
+    loadWidgetStyleSheet(create_container_page, ":/styles/styles/create_container_page.qss");
     return create_container_page;
 }
 
-createVMPage* createVMPage() {
+createVMPage* create_vm_page() {
     createVMPage* create_vm_page = new createVMPage();
     create_vm_page->setFixedSize(800, 700);
-    loadWidgetStyleSheet(nav, ":/styles/styles/createVMPage.qss");
+    loadWidgetStyleSheet(create_vm_page, ":/styles/styles/create_vm_page.qss");
     return create_vm_page;
 
 }

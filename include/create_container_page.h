@@ -9,7 +9,7 @@ class createContainerPage : public QWidget {
 
 public:
     explicit createContainerPage(QWidget *parent = nullptr);
-    ~createContainerButton();
+    ~createContainerPage();
 
 signals:
     void buttonClicked(const QString &buttonName); 
