@@ -41,6 +41,12 @@ int main(int argc, char *argv[]) {
         } 
     });
 
+    QObject::connect(createVMPage, &createVMPage::buttonClicked, [=](const QString &buttonName) {
+        if (buttonName == "back") {
+            stackedWidget->setCurrentWidget(VMWidget);
+        } 
+    });
+
 
     createContainerButton* create_container_button = containerWidget->findChild<createContainerButton*>();
     createVMButton* create_vm_button = VMWidget->findChild<createVMButton*>();
