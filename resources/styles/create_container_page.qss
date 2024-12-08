@@ -1,0 +1,63 @@
+QWidget {
+    background-color: #2e2e2e;  
+}
+
+QLabel {
+    background-color: transparent; 
+    font-weight: bold;
+    color: #2e2e2e;
+    color: #333;
+}
+
+QPushButton#backButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom : 5px;
+}
+
+QPushButton#backButton:hover {
+    background-color: #45a049;
+}
+
+QPushButton#backButton:pressed {
+    background-color: #388e3c;  
+}
+
+QPushButton {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #2980b9;
+}
+
+QPushButton:pressed {
+    background-color: #1f6396;  
+}
+
+QPushButton#createArchButton {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+QPushButton#createArchButton::icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+QVBoxLayout, QHBoxLayout, QGridLayout {
+    spacing: 10px;
+}
+

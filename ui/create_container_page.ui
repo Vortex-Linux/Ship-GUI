@@ -78,16 +78,17 @@
 
    <item>
     <widget class="QWidget" name="containerGridWidget">
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QPushButton" name="container1Button">
+      <layout class="QGridLayout" name="gridLayout">  
+
+      <item row="0" column="0" alignment="Qt::AlignCenter">
+       <widget class="QPushButton" name="createArchButton">
         <property name="text">
          <string>ArchLinux</string>
         </property>
         <property name="fixedSize">
           <size>
-            <width>800</width>
-            <height>50</height>
+            <width>700</width>
+            <height>50</height> 
           </size>
         </property>
         <property name="sizePolicy">
@@ -98,6 +99,7 @@
         </property>
        </widget>
       </item>
+
      </layout>
     </widget>
    </item>
