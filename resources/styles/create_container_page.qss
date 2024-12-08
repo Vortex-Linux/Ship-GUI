@@ -46,17 +46,6 @@ QPushButton:pressed {
     background-color: #1f6396;  
 }
 
-QPushButton#createArchButton {
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-QPushButton#createArchButton::icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-}
-
 QVBoxLayout, QHBoxLayout, QGridLayout {
     spacing: 10px;
 }
