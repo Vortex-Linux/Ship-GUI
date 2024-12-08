@@ -77,385 +77,390 @@
    </item>
 
    <item>
-    <widget class="QWidget" name="containerGridWidget">
-      <layout class="QGridLayout" name="gridLayout">  
+    <widget class="QScrollArea" name="containerGridWidget">
+      <widget class="QWidget" name="containerGridWidgetContents">  
+        <layout class="QGridLayout" name="gridLayout">  
+        <property name="verticalSpacing">
+          <number>20</number>
+        </property>
 
-      <item row="0" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createAlmaButton">
-        <property name="text">
-         <string>AlmaLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>     
+        <item row="0" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createAlmaButton">
+          <property name="text">
+           <string>AlmaLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>     
 
-      <item row="1" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createAlpineButton">
-        <property name="text">
-         <string>AlpineLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="1" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createAlpineButton">
+          <property name="text">
+           <string>AlpineLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="3" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createAmazonButton">
-        <property name="text">
-         <string>AmazonLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
-      
-      <item row="4" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createArchButton">
-        <property name="text">
-         <string>ArchLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="3" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createAmazonButton">
+          <property name="text">
+           <string>AmazonLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
+        
+        <item row="4" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createArchButton">
+          <property name="text">
+           <string>ArchLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="5" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createBazziteButton">
-        <property name="text">
-         <string>Bazzite Arch</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="5" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createBazziteButton">
+          <property name="text">
+           <string>Bazzite Arch</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="6" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createCentButton">
-        <property name="text">
-         <string>CentOS</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
-      
-      <item row="7" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createDebianButton">
-        <property name="text">
-         <string>Debian</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="6" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createCentButton">
+          <property name="text">
+           <string>CentOS</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
+        
+        <item row="7" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createDebianButton">
+          <property name="text">
+           <string>Debian</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="8" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createFedoraButton">
-        <property name="text">
-         <string>Fedora</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="8" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createFedoraButton">
+          <property name="text">
+           <string>Fedora</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="9" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createSuseButton">
-        <property name="text">
-         <string>OpenSuse</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="9" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createSuseButton">
+          <property name="text">
+           <string>OpenSuse</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="10" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createRedhatButton">
-        <property name="text">
-         <string>RedHat</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
-      
-      <item row="11" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createRockyButton">
-        <property name="text">
-         <string>RockyLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="10" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createRedhatButton">
+          <property name="text">
+           <string>RedHat</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
+        
+        <item row="11" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createRockyButton">
+          <property name="text">
+           <string>RockyLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="12" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createUbuntuButton">
-        <property name="text">
-         <string>Ubuntu</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="12" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createUbuntuButton">
+          <property name="text">
+           <string>Ubuntu</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="13" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createWolfiButton">
-        <property name="text">
-         <string>Chainguard Wolfi</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
-      
-      <item row="14" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createClearButton">
-        <property name="text">
-         <string>ClearLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="13" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createWolfiButton">
+          <property name="text">
+           <string>Chainguard Wolfi</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
+        
+        <item row="14" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createClearButton">
+          <property name="text">
+           <string>ClearLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="15" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createCrystalButton">
-        <property name="text">
-         <string>CrystalLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="15" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createCrystalButton">
+          <property name="text">
+           <string>CrystalLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="16" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createDeepinButton">
-        <property name="text">
-         <string>Deepin</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="16" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createDeepinButton">
+          <property name="text">
+           <string>Deepin</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="17" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createGentooButton">
-        <property name="text">
-         <string>Gentoo</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>  
-      
-      <item row="18" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createNeonButton">
-        <property name="text">
-         <string>KDE Neon</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>  
+        <item row="17" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createGentooButton">
+          <property name="text">
+           <string>Gentoo</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>  
+        
+        <item row="18" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createNeonButton">
+          <property name="text">
+           <string>KDE Neon</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>  
 
-      <item row="19" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createKaliButton">
-        <property name="text">
-         <string>KaliLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-        </widget>
-      </item>
-      
+        <item row="19" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createKaliButton">
+          <property name="text">
+           <string>KaliLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+          </widget>
+        </item>
+        
 
-      <item row="20" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createMintButton">
-        <property name="text">
-         <string>Mint</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="20" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createMintButton">
+          <property name="text">
+           <string>Mint</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="21" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createNeuroButton">
-        <property name="text">
-         <string>NeuroDebian</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="21" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createNeuroButton">
+          <property name="text">
+           <string>NeuroDebian</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-      <item row="22" column="0" alignment="Qt::AlignCenter">
-       <widget class="QPushButton" name="createOracleButton">
-        <property name="text">
-         <string>OracleLinux</string>
-        </property>
-        <property name="fixedSize">
-          <size>
-            <width>700</width>
-            <height>50</height> 
-          </size>
-        </property>
-        <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
-        </property>
-       </widget>
-      </item>
+        <item row="22" column="0" alignment="Qt::AlignCenter">
+         <widget class="QPushButton" name="createOracleButton">
+          <property name="text">
+           <string>OracleLinux</string>
+          </property>
+          <property name="fixedSize">
+            <size>
+              <width>700</width>
+              <height>50</height> 
+            </size>
+          </property>
+          <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed"/>
+          </property>
+         </widget>
+        </item>
 
-     </layout>
+      </layout>
+      </widget>
     </widget>
    </item>
   </layout>

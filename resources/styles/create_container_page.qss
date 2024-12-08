@@ -50,3 +50,8 @@ QVBoxLayout, QHBoxLayout, QGridLayout {
     spacing: 10px;
 }
 
+QScrollArea {
+    margin-left : 10px;
+    margin-right : 40px;
+}
+
