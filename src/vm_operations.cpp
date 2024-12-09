@@ -62,19 +62,20 @@ void send_vm(std::string vm_name) {
 
 void create_vm(std::string vm_type, std::string vm_name) {
     static const std::unordered_map<std::string, std::string> vm_type_to_image = {
-        {"", "tails"},
-        {"", "whonix"},
-        {"", "debian"},
-        {"", "ubuntu"},
-        {"", "arch"},
-        {"", "fedora"},
-        {"", "alpine"},
-        {"", "centos"},
-        {"", "freebsd"},
-        {"", "openbsd"},
-        {"", "netbsd"},
-        {"", "dragonflybsd"},
-        {"", "windows"},
+        {"TailsOS", "tails"},
+        {"Whonix", "whonix"},
+        {"Debian", "debian"},
+        {"Ubuntu", "ubuntu"},
+        {"ArchLinux", "arch"},
+        {"Gntoo", "gentoo"},
+        {"Fedora", "fedora"},
+        {"AlpineLinux", "alpine"},
+        {"CentOS", "centos"},
+        {"FreeBSD", "freebsd"},
+        {"OpenBSD", "openbsd"},
+        {"NetBSD", "netbsd"},
+        {"DragonflyBSD", "dragonflybsd"},
+        {"Windows", "windows"},
     };
 
     auto it = vm_type_to_image.find(vm_type);

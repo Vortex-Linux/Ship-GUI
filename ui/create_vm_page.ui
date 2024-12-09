@@ -206,7 +206,7 @@
         <item row="7" column="0" alignment="Qt::AlignCenter">
          <widget class="QPushButton" name="createAlpineButton">
           <property name="text">
-           <string>Alpine</string>
+           <string>AlpineLinux</string>
           </property>
           <property name="fixedSize">
             <size>
