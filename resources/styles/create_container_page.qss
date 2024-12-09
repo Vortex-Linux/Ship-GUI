@@ -5,6 +5,9 @@ QWidget {
 QLabel {
     background-color: transparent; 
     font-weight: bold;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    padding: 20px;
     color: #2e2e2e;
     color: #333;
 }
@@ -55,3 +58,40 @@ QScrollArea {
     margin-right : 40px;
 }
 
+QDialog {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+QLabel {
+    font-size: 14px;
+    color: #dcdcdc;
+    margin-bottom: 10px;
+}
+
+QLineEdit {
+    background-color: #444444;
+    color: white;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QLineEdit:focus {
+    border-color: #66afe9;
+}
+
+QComboBox {
+    background-color: #444444;
+    color: white;
+    border: 1px solid #666666;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QComboBox:focus {
+    border-color: #66afe9;
+}
