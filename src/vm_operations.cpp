@@ -60,11 +60,6 @@ void send_vm(std::string vm_name) {
     exec(send_vm_cmd);
 }
 
-
-
-
-
-
-
-
-
+void create_vm(std::string vm_type, std::string vm_name) {
+    std::cout << "Creating VM " << vm_name << " of type " << vm_type << std::endl;
+}

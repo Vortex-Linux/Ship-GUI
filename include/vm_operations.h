@@ -16,6 +16,7 @@ void resume_vm(std::string vm_name);
 void save_vm(std::string vm_name);
 void shutdown_vm(std::string vm_name);
 void send_vm(std::string vm_name);
+void create_vm(std::string vm_type, std::string vm_name);
 
 #endif 
 
