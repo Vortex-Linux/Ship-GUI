@@ -22,6 +22,7 @@
 #include <iostream>
 #include <ostream>
 #include <sstream>
+#include <unordered_map>
 
 #endif // HEADERS_H
 

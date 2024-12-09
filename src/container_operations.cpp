@@ -42,6 +42,16 @@ void send_container(std::string container_name) {
 }
 
 void create_container(std::string container_type, std::string container_name) {
-    std::cout << "Creating container " << container_name << " of type " << container_type << std::endl;
-}
+    static const std::unordered_map<std::string, std::string> container_type_to_image = {
+        {"debian", "debian:latest"},
+        {"ubuntu", "ubuntu:20.04"},
+        {"arch", "archlinux:base"},
+        {"alpine", "alpine:3.16"},
+    };
 
+    auto it = container_type_to_image.find(container_type);
+    if (it != container_type_to_image.end()) {
+        const std::string& image = it->second;
+        run_in_terminal("ship --ctr create --image " + image + " --name " + container_name);
+    }
+}

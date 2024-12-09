@@ -61,5 +61,16 @@ void send_vm(std::string vm_name) {
 }
 
 void create_vm(std::string vm_type, std::string vm_name) {
-    std::cout << "Creating VM " << vm_name << " of type " << vm_type << std::endl;
+    static const std::unordered_map<std::string, std::string> vm_type_to_image = {
+        {"debian", "debian:latest"},
+        {"ubuntu", "ubuntu:20.04"},
+        {"arch", "archlinux:base"},
+        {"alpine", "alpine:3.16"},
+    };
+
+    auto it = vm_type_to_image.find(vm_type);
+    if (it != vm_type_to_image.end()) {
+        const std::string& image = it->second;
+        run_in_terminal("ship --vm create --image " + image + " --name " + vm_name);
+    }
 }
