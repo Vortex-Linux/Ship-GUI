@@ -3,6 +3,7 @@
 
 #include "ui_create_vm_page.h"
 #include "headers.h"
+#include <vm_operations.h>
 
 class createVMPage : public QWidget {
     Q_OBJECT

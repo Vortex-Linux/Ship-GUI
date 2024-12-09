@@ -6,8 +6,21 @@ createVMPage::createVMPage(QWidget *parent) : QWidget(parent), ui(new Ui::create
         emit buttonClicked("back");
     });
 
-        QList<QPushButton*> VMButtons = {
-        ui->createAlmaButton,
+    QList<QPushButton*> VMButtons = {
+        ui->createTailsButton,
+        ui->createWhonixButton,
+        ui->createDebianButton,
+        ui->createUbuntuButton,
+        ui->createArchButton,
+        ui->createGentooButton,
+        ui->createFedoraButton,
+        ui->createAlpineButton,
+        ui->createCentButton,
+        ui->createFreeButton,
+        ui->createOpenButton,
+        ui->createNetButton,
+        ui->createDragonflyButton,
+        ui->createWindowsButton,
     };
 
     for (QPushButton* button : VMButtons) {
