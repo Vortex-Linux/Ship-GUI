@@ -10,6 +10,7 @@
 #include <QThread>
 #include <QThreadPool>
 #include <QScrollArea>
+#include <QInputDialog>
 #include <QPushButton>
 #include <QStackedWidget>
 #include <QVBoxLayout>

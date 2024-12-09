@@ -12,7 +12,7 @@ void view_container(std::string container_name);
 void upgrade_container(std::string container_name);
 void stop_container(std::string container_name);
 void send_container(std::string container_name);
-void create_container(std::string container_type, std::string container_name);
+void create_container(std::string container_type, std::string std::string container_name);
 
 #endif 
 

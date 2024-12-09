@@ -33,7 +33,17 @@ createContainerPage::createContainerPage(QWidget *parent) : QWidget(parent), ui(
 
     for (QPushButton* button : containerButtons) {
         connect(button, &QPushButton::clicked, [=]() {
-            emit create_container(button->text());
+            bool ok;
+            QString containerName = QInputDialog::getText(this, 
+                tr("Create Container"), 
+                tr("Enter container name for %1:").arg(button->text()),
+                QLineEdit::Normal, 
+                button->text(), 
+                &ok);
+            
+            if (ok && !containerName.isEmpty()) {
+                create_container(button->text().toStdString(), containerName.toStdString());
+            }
         });
     }
 }

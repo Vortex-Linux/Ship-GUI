@@ -3,6 +3,7 @@
 
 #include "ui_create_container_page.h"
 #include "headers.h"
+#include "container_operations.h"
 
 class createContainerPage : public QWidget {
     Q_OBJECT
