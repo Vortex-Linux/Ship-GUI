@@ -43,10 +43,28 @@ void send_container(std::string container_name) {
 
 void create_container(std::string container_type, std::string container_name) {
     static const std::unordered_map<std::string, std::string> container_type_to_image = {
-        {"debian", "debian:latest"},
-        {"ubuntu", "ubuntu:20.04"},
-        {"arch", "archlinux:base"},
-        {"alpine", "alpine:3.16"},
+        {"AlmaLinux", "quay.io/toolbx-images/almalinux-toolbox:latest"},
+        {"AlpineLinux", ""},
+        {"AmazonLinux", ""},
+        {"ArchLinux", ""},
+        {"BazziteArch", ""},
+        {"CentOS", ""},
+        {"Debian", ""},
+        {"Fedora", ""},
+        {"OpenSuse", ""},
+        {"RedHat", ""},
+        {"RockyLinux", ""},
+        {"Ubuntu", ""},
+        {"Chainguard Wolfi", ""},
+        {"ClearLinux", ""},
+        {"CrystalLinux", ""},
+        {"Deepin", ""},
+        {"Gentoo", ""},
+        {"KDE Neon", ""},
+        {"KaliLinux", ""},
+        {"Mint", ""},
+        {"NeuroDebian", ""},
+        {"OracleLinux", ""},
     };
 
     auto it = container_type_to_image.find(container_type);
