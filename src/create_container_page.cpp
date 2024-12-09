@@ -28,7 +28,11 @@ createContainerPage::createContainerPage(QWidget *parent) : QWidget(parent), ui(
         ui->createKaliButton,
         ui->createMintButton,
         ui->createNeuroButton,
-        ui->createOracleButton
+        ui->createOracleButton, 
+        ui->createSlackwareButton, 
+        ui->createSteamButton, 
+        ui->createVanillaButton, 
+        ui->createVoidButton 
     };
 
     for (QPushButton* button : containerButtons) {
