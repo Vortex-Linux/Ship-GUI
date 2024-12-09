@@ -12,6 +12,10 @@ QLabel {
     color: #333;
 }
 
+QLabel#titleLabel {
+    font-size: 30px;
+}
+
 QPushButton#backButton {
     background-color: #4CAF50;
     color: white;
