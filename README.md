@@ -50,15 +50,6 @@ Ensure you have the following dependencies installed:
 - libvirt development libraries
 - qemu development libraries
 
-## Recommended Distributions
-
-While Ship-GUI is distribution-agnostic, it is optimized for:
-- Vortex Linux
-- Debian-based distributions
-- Fedora
-- Arch Linux
-- NixOS
-
 ## Usage
 
 Launch the application and explore the comprehensive interface for managing your virtual machines and containers across different Linux environments.
