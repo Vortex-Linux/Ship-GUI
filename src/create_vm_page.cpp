@@ -35,6 +35,7 @@ createVMPage::createVMPage(QWidget *parent) : QWidget(parent), ui(new Ui::create
             
             if (ok && !VMName.isEmpty()) {
                 create_vm(button->text().toStdString(), VMName.toStdString());
+                emit buttonClicked("created_vm");
             }
         });
     }

@@ -913,6 +913,8 @@ build/moc/moc_create_container_button.cpp: include/create_container_button.h \
 build/moc/moc_create_container_page.cpp: include/create_container_page.h \
 		build/ui/ui_create_container_page.h \
 		include/headers.h \
+		include/container_operations.h \
+		include/utils.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/create_container_page.h -o build/moc/moc_create_container_page.cpp
@@ -927,6 +929,8 @@ build/moc/moc_create_vm_button.cpp: include/create_vm_button.h \
 build/moc/moc_create_vm_page.cpp: include/create_vm_page.h \
 		build/ui/ui_create_vm_page.h \
 		include/headers.h \
+		include/vm_operations.h \
+		include/utils.h \
 		build/moc/moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/arun/VortexLinux/Ship-GUI/build/moc/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/arun/VortexLinux/Ship-GUI -I/home/arun/VortexLinux/Ship-GUI/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include include/create_vm_page.h -o build/moc/moc_create_vm_page.cpp
@@ -1011,7 +1015,9 @@ build/obj/create_container_button.o: src/create_container_button.cpp include/cre
 
 build/obj/create_container_page.o: src/create_container_page.cpp include/create_container_page.h \
 		build/ui/ui_create_container_page.h \
-		include/headers.h
+		include/headers.h \
+		include/container_operations.h \
+		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/create_container_page.o src/create_container_page.cpp
 
 build/obj/create_vm_button.o: src/create_vm_button.cpp include/create_vm_button.h \
@@ -1021,7 +1027,9 @@ build/obj/create_vm_button.o: src/create_vm_button.cpp include/create_vm_button.
 
 build/obj/create_vm_page.o: src/create_vm_page.cpp include/create_vm_page.h \
 		build/ui/ui_create_vm_page.h \
-		include/headers.h
+		include/headers.h \
+		include/vm_operations.h \
+		include/utils.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o build/obj/create_vm_page.o src/create_vm_page.cpp
 
 build/obj/main.o: src/main.cpp include/main.h \

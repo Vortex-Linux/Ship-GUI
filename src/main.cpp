@@ -35,14 +35,42 @@ int main(int argc, char *argv[]) {
         }
     });
 
-    QObject::connect(createContainerPage, &createContainerPage::buttonClicked, [=](const QString &buttonName) {
+    QObject::connect(createContainerPage, &createContainerPage::buttonClicked, [&](const QString &buttonName) {
         if (buttonName == "back") {
             stackedWidget->setCurrentWidget(containerWidget);
-        } 
+        } else {
+            if (containerWidget) {
+                int containerIndex = stackedWidget->indexOf(containerWidget);
+                if (containerIndex != -1) {
+                    QWidget* removedWidget = stackedWidget->widget(containerIndex);
+                    stackedWidget->removeWidget(removedWidget);
+                    delete removedWidget;
+                }
+                containerWidget = nullptr;
+            }
+
+            containerWidget = createContainerWidget();
+            stackedWidget->addWidget(containerWidget);
+            stackedWidget->setCurrentWidget(containerWidget);
+        }
     });
 
-    QObject::connect(createVMPage, &createVMPage::buttonClicked, [=](const QString &buttonName) {
+    QObject::connect(createVMPage, &createVMPage::buttonClicked, [&](const QString &buttonName) {
         if (buttonName == "back") {
+            stackedWidget->setCurrentWidget(VMWidget);
+        }else {
+            if (VMWidget) {
+                int VMIndex = stackedWidget->indexOf(VMWidget);
+                if (VMIndex != -1) {
+                    QWidget* removedWidget = stackedWidget->widget(VMIndex);
+                    stackedWidget->removeWidget(removedWidget);
+                    delete removedWidget;
+                }
+                VMWidget = nullptr;
+            }
+
+            VMWidget = createVMWidget();
+            stackedWidget->addWidget(VMWidget);
             stackedWidget->setCurrentWidget(VMWidget);
         } 
     });
@@ -52,13 +80,13 @@ int main(int argc, char *argv[]) {
     createVMButton* create_vm_button = VMWidget->findChild<createVMButton*>();
 
     if (create_container_button) {
-        QObject::connect(create_container_button, &createContainerButton::buttonClicked, [=](const QString& buttonName) {
+        QObject::connect(create_container_button, &createContainerButton::buttonClicked, [=]() {
             stackedWidget->setCurrentWidget(createContainerPage);
         });
     }
 
     if (create_vm_button) {
-        QObject::connect(create_vm_button, &createVMButton::buttonClicked, [=](const QString& buttonName) {
+        QObject::connect(create_vm_button, &createVMButton::buttonClicked, [=]() {
             stackedWidget->setCurrentWidget(createVMPage);
         });
     }

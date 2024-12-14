@@ -47,6 +47,7 @@ createContainerPage::createContainerPage(QWidget *parent) : QWidget(parent), ui(
             
             if (ok && !containerName.isEmpty()) {
                 create_container(button->text().toStdString(), containerName.toStdString());
+                emit buttonClicked("created_container");
             }
         });
     }
